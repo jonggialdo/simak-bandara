@@ -35,12 +35,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Web font -->
     <!--begin::Base Styles -->
     <!--begin::Page Vendors -->
-    <link href="../assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url()?>public/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Page Vendors -->
-    <link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url()?>public/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url()?>public/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
-    <link rel="shortcut icon" href="../assets/demo/default/media/img/logo/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo base_url()?>public/assets/demo/default/media/img/logo/favicon.ico" />
     <!--butuh icon-->
 </head>
 <!-- end::Head -->
@@ -58,7 +58,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="m-stack m-stack--ver m-stack--general">
                             <div class="m-stack__item m-stack__item--middle m-brand__logo">
                                 <a href="index.html" class="m-brand__logo-wrapper">
-                                    <img alt="" src="../assets/demo/default/media/img/logo/logo_default_dark.png" />
+                                    <img alt="" src="<?php echo base_url()?>public/assets/demo/default/media/img/logo/logo_default_dark.png" />
                                     <!--butuh logo-->
                                 </a>
                             </div>
@@ -116,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         m-dropdown-toggle="click">
                                         <a href="#" class="m-nav__link m-dropdown__toggle">
                                             <span class="m-topbar__userpic">
-                                                <img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                                <img src="<?php echo base_url()?>public/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
                                             </span>
                                             <span class="m-topbar__username m--hide">
                                                 Nick
@@ -125,10 +125,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="m-dropdown__wrapper">
                                             <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                             <div class="m-dropdown__inner">
-                                                <div class="m-dropdown__header m--align-center" style="background: url(../assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+                                                <div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url()?>public/assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
                                                     <div class="m-card-user m-card-user--skin-dark">
                                                         <div class="m-card-user__pic">
-                                                            <img src="../assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                                                            <img src="<?php echo base_url()?>public/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                                                         </div>
                                                         <div class="m-card-user__details">
                                                             <span class="m-card-user__name m--font-weight-500">
@@ -315,7 +315,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="la la-gear"></i>
                                             </span>
                                             <h3 class="m-portlet__head-text">
-                                                Ubah Kode Rekening
+                                                Tambah Rekening Baru
                                             </h3>
                                         </div>
                                     </div>
@@ -400,14 +400,14 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- end::Quick Sidebar -->
         <!-- begin::Quick Nav -->
         <!--begin::Base Scripts -->
-        <script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-        <script src="../assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
         <!--end::Base Scripts -->
         <!--begin::Page Vendors -->
-        <script src="../assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
         <!--end::Page Vendors -->
         <!--begin::Page Snippets -->
-        <script src="../assets/app/js/dashboard.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/assets/app/js/dashboard.js" type="text/javascript"></script>
         <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->
