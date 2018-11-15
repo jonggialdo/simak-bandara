@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2018 at 02:11 PM
+-- Generation Time: Nov 15, 2018 at 11:27 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -74,7 +74,8 @@ CREATE TABLE `user` (
 -- (See below for the actual view)
 --
 CREATE TABLE `vwkoderekening` (
-`kode_rekening` int(11)
+`id` int(11)
+,`kode_rekening` int(11)
 ,`nama_kode` int(11)
 ,`status` enum('debet','kredit','','')
 );
@@ -86,7 +87,8 @@ CREATE TABLE `vwkoderekening` (
 -- (See below for the actual view)
 --
 CREATE TABLE `vwtransaksi` (
-`kd_debet` int(11)
+`id` int(11)
+,`kd_debet` int(11)
 ,`nama_kode_debet` int(11)
 ,`kd_kredit` int(11)
 ,`nama_kode_kredit` int(11)
@@ -103,7 +105,7 @@ CREATE TABLE `vwtransaksi` (
 --
 DROP TABLE IF EXISTS `vwkoderekening`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwkoderekening`  AS  select `kode_rekening`.`kode_rekening` AS `kode_rekening`,`kode_rekening`.`nama_kode` AS `nama_kode`,`kode_rekening`.`status` AS `status` from `kode_rekening` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwkoderekening`  AS  select `kode_rekening`.`id` AS `id`,`kode_rekening`.`kode_rekening` AS `kode_rekening`,`kode_rekening`.`nama_kode` AS `nama_kode`,`kode_rekening`.`status` AS `status` from `kode_rekening` ;
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vwtransaksi`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwtransaksi`  AS  select `a`.`kd_debet` AS `kd_debet`,`b`.`nama_kode` AS `nama_kode_debet`,`a`.`kd_kredit` AS `kd_kredit`,`c`.`nama_kode` AS `nama_kode_kredit`,`a`.`tgl_transaksi` AS `tgl_transaksi`,`a`.`uraian` AS `Uraian`,`a`.`nominal_debet` AS `nominal_debet`,`a`.`nominal_kredit` AS `nominal_kredit` from ((`transaksi` `a` left join `kode_rekening` `b` on((`a`.`kd_debet` = `b`.`kode_rekening`))) left join `kode_rekening` `c` on((`a`.`kd_kredit` = `c`.`kode_rekening`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwtransaksi`  AS  select `a`.`id` AS `id`,`a`.`kd_debet` AS `kd_debet`,`b`.`nama_kode` AS `nama_kode_debet`,`a`.`kd_kredit` AS `kd_kredit`,`c`.`nama_kode` AS `nama_kode_kredit`,`a`.`tgl_transaksi` AS `tgl_transaksi`,`a`.`uraian` AS `Uraian`,`a`.`nominal_debet` AS `nominal_debet`,`a`.`nominal_kredit` AS `nominal_kredit` from ((`transaksi` `a` left join `kode_rekening` `b` on((`a`.`kd_debet` = `b`.`kode_rekening`))) left join `kode_rekening` `c` on((`a`.`kd_kredit` = `c`.`kode_rekening`))) ;
 
 --
 -- Indexes for dumped tables
