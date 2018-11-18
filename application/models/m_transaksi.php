@@ -1,6 +1,6 @@
 <?php
 
-class M_rekening extends CI_Model{
+class M_transaksi extends CI_Model{
   public function __construct(){
     $this->load->database();
     function __construct() {
@@ -12,7 +12,16 @@ class M_rekening extends CI_Model{
     $q = $this->db->get('transaksi');
     return $q->result();
   }
-  
+
+  public function tambahTransaksi($data){
+    $this->db->insert('transaksi',$data);
+  }
+
+  public function editTransaksi($data,$id){
+    $this->db->where('id',$id);
+    $this->db->update('transaksi',$data);
+  }
+
 }
 
  ?>
