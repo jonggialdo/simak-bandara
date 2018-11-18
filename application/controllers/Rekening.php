@@ -25,6 +25,7 @@ class Rekening extends CI_Controller {
 	public function tambahRekening(){
 		$this->load->view('v_rekening/tambahRekening');
 	}
+<<<<<<< HEAD
 
 	public function Create(){
 		$this->load->model('mstRekening');
@@ -76,3 +77,4 @@ class Rekening extends CI_Controller {
 		redirect(base_url(), 'refresh');
 	}
 }
+
