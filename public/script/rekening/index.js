@@ -1,3 +1,4 @@
+var rootPage = window.location.pathname.split('/')[1]
 //== Class Initialization
 jQuery(document).ready(function () {
 	Table.Init();
@@ -10,7 +11,7 @@ var Table = {
 				type: "remote",
 				source: {
 					read: {
-						url: "#", //<?=site_url()?>/controller/fungsi/parameter
+						url: '/'+rootPage+'/Rekening/ListRekening', //<?=site_url()?>/controller/fungsi/parameter
 						method: "GET",
 						map: function (r) {
 							var e = r;

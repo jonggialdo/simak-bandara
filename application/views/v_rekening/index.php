@@ -354,7 +354,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-												<a href="#" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+												<a href="<?php echo base_url('/Rekening/tambahRekening') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 													<span>
 														<i class="fa fa-plus"></i>
 														<span>
@@ -392,6 +392,9 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Page Snippets -->
 		<script src="<?php echo base_url()?>public/assets/app/js/dashboard.js" type="text/javascript"></script>
 		<!--end::Page Snippets -->
+
+		<script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/script/rekening/index.js" type="text/javascript"></script>
 </body>
 <!-- end::Body -->
 

@@ -321,15 +321,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <!--begin::Form-->
-                                <form class="m-form m-form--fit m-form--label-align-right" id="formNewProject">
+                                <form class="m-form m-form--fit m-form--label-align-right" id="formNewRekening">
 
                                     <div class="m-form__content">
-                                        <div class="m-alert m-alert--icon alert alert-danger m--hide" role="alert" id="msgProjectFail">
+                                        <div class="m-alert m-alert--icon alert alert-danger m--hide" role="alert" id="msgRekeningFail">
                                             <div class="m-alert__icon">
                                                 <i class="la la-warning"></i>
                                             </div>
                                             <div class="m-alert__text">
-                                                Oh sorry! Please check your form project again :).
+                                                Maaf, tolong periksa kembali kolom isian anda
                                             </div>
                                             <div class="m-alert__close">
                                                 <button type="button" class="close" data-close="alert" aria-label="Close"></button>
@@ -345,7 +345,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="number" class="form-control m-input" maxlength="5" name="tbxprojectinitial" id="tbxProjectInitial" required>
+                                                <input type="number" class="form-control m-input" minlength='5' maxlength="5" name="tbxKodeRekening" id="tbxKodeRekening" required>
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
@@ -354,7 +354,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" id="tbxProjectName" class="form-control m-input" maxlength="100" name="tbxProjectName" required>
+                                                <input type="text" id="tbxNamaKode" class="form-control m-input" maxlength="100" name="tbxNamaKode" required>
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
@@ -364,8 +364,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </label>
                                             <div class="col-lg-6">
                                                 <select id="slsStatusRekening" style="margin-top:5px" required>
-                                                    <option val=1>Debit</option>
-                                                    <option val=2>Kredit</option>
+                                                    <option value='debet'>Debit</option>
+                                                    <option value='kredit'>Kredit</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -409,6 +409,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Page Snippets -->
         <script src="<?php echo base_url()?>public/assets/app/js/dashboard.js" type="text/javascript"></script>
         <!--end::Page Snippets -->
+
+        <script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/script/rekening/create.js" type="text/javascript"></script>
 </body>
 <!-- end::Body -->
 
