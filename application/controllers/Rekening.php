@@ -9,44 +9,37 @@ class Rekening extends CI_Controller {
 
 	public function index()
 	{
-		// $this->load->model('mstRekening');
-		// $data = $this->mstRekening->GetRekening();
-		// $data = array('data' => $data);
-
-		// echo json_encode($data)
-
 		$this->load->view('v_rekening/index');
 	}
 
 	public function editRekening(){ //parameternya id rekening
-		$this->load->view('v_rekening/editRekening');
+		$id = $this->uri->segment(3);
+		$this->load->view('v_rekening/editRekening', ['id' => $id]);
 	}
 
 	public function tambahRekening(){
 		$this->load->view('v_rekening/tambahRekening');
 	}
-<<<<<<< HEAD
 
 	public function Create(){
 		$this->load->model('mstRekening');
 		$data = array (
-			'kode_rekening' => $this->input->post('kode'),
-			'nama_kode' => $this->input->post('nama'),
-			'status' => $this->input->post('status'),
+			'kode_rekening' => $this->input->post('tbxKodeRekening'),
+			'nama_kode' => $this->input->post('tbxNamaKode'),
+			'status' => $this->input->post('slsStatusRekening'),
 			'created_date' => date('y-m-d'),
-			'created_by' => "siapa yang edit"
+			'created_by' => "siapa yang buat"
 			);
 		$data = $this->mstRekening->Create($data);
 
-		redirect(base_url(), 'refresh');
 	}
 
 	public function Update(){
 		//ilham kurang id + name di form viewnya masih ga jelas
-		$id = 1;
-		$kode_rekening = $this->input->post('kode');
-		$nama_kode = $this->input->post('nama');
-		$status = $this->input->post('status');
+		$id = $this->input->post('id');
+		$kode_rekening = $this->input->post('tbxKodeRekening');
+		$nama_kode = $this->input->post('tbxNamaKode');
+		$status = $this->input->post('slsStatusRekening');
 		$updated_date = date('y-m-d');
 		$updated_by = "siapa yang edit";
 
@@ -70,11 +63,19 @@ class Rekening extends CI_Controller {
 		}
 	}
 
-	public function Delete($id){
-		$id = array('id' => $id);
+	public function Delete(){
+		$id = array('id' => $this->uri->segment(3));
 		$this->load->model('mstRekening');
 		$this->mstRekening->Delete($id);
 		redirect(base_url(), 'refresh');
+	}
+
+	public function ListRekening(){
+		$this->load->model('mstRekening');
+		$data = $this->mstRekening->GetRekening();
+		$data = array('data' => $data);
+
+		echo json_encode($data);
 	}
 }
 

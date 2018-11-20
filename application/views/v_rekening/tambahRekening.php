@@ -363,7 +363,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <select id="slsStatusRekening" style="margin-top:5px" required>
+                                                <select name="slsStatusRekening" id="slsStatusRekening" style="margin-top:5px" required>
                                                     <option value='debet'>Debit</option>
                                                     <option value='kredit'>Kredit</option>
                                                 </select>
@@ -385,6 +385,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- <input type="hidden" name="id" value="asds"/> -->
                                 </form>
                                 <!--end::Form-->
                             </div>
@@ -412,6 +413,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>public/script/rekening/create.js" type="text/javascript"></script>
+
+        
 </body>
 <!-- end::Body -->
 
