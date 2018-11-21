@@ -28,13 +28,11 @@ var Transaction = function(){
 
     btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
-    var data = $("#formNewRekening").serialize();
-    console.log(data);
-
     $.ajax({
         url: '/'+rootPage+'/Rekening/Create',
         type: 'POST',
-        data: data
+        dataType: 'json',
+        data: {data: JSON.stringify(params)}
     })
     .done(function(data, textStatus, jqXHR){
         Common.Alert.SuccessRoute("Berhasil Menambahkan Rekening Baru", '/simak-bandara/Rekening');

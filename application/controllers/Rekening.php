@@ -23,15 +23,19 @@ class Rekening extends CI_Controller {
 
 	public function Create(){
 		$this->load->model('mstRekening');
-		$data = array (
-			'kode_rekening' => $this->input->post('tbxKodeRekening'),
-			'nama_kode' => $this->input->post('tbxNamaKode'),
-			'status' => $this->input->post('slsStatusRekening'),
+
+		$formData = json_decode($this->input->post('data'), true);
+		
+		$data = array (	
+			'kode_rekening' => $formData['kode'],
+			'nama_kode' =>  $formData['nama'],
+			'status' =>  $formData['status'],
 			'created_date' => date('y-m-d'),
 			'created_by' => "siapa yang buat"
-			);
+		);
 		$data = $this->mstRekening->Create($data);
-
+		
+		echo json_encode($formData);
 	}
 
 	public function Update(){
