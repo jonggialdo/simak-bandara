@@ -9,18 +9,18 @@ class Transaksi extends CI_Controller {
 
 	public function index(){
 		$this->load->model('m_transaksi');
-
-    $data['trx'] = $this->m_transaksi->getTransaksi();
-
-    $this->load->view('v_listTransaksi', $data);
+    $this->load->view('v_transaksi/index', $data);
 	}
 
+
   public function viewTambahTransaksi(){
-    $this->load->view('v_addTransaksi');
+    $this->load->view('v_transaksi/v_addTransaksi');
   }
 
   public function tambahTransaksi(){
     $this->load->model('m_transaksi');
+
+		$formData = json_decode($this->input->post('data'), true);
 
 		$data = array(
 			'kd_debet' => $this->input->post('kd_debet'),
@@ -32,7 +32,8 @@ class Transaksi extends CI_Controller {
 		);
 
 		$this->m_dokumen->insertTransaksi($data);
-		redirect('index');
+
+		echo json_encode($formData);
   }
 
 	public function editTransaksi(){
@@ -49,13 +50,14 @@ class Transaksi extends CI_Controller {
 		);
 
 		$this->m_transaksi->editTransaksi($data,$id);
+
 	}
 
 	public function hapusTransaksi(){
 		$id = $this->uri->segment(3);
 		$this->load->model('m_transaksi');
 		$this->m_dokumen->delete_dok($id);
-		redirect('index');
+		redirect(base_url(), 'refresh');
 	}
 
 }
