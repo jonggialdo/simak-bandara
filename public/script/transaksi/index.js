@@ -55,10 +55,12 @@ var Table = {
 				},
 				{ field: "kd_debet", title: "Kode Debet", textAlign: "center" },
 				{ field: "kd_kredit", title: "Kode Kredit", textAlign: "center" },
-				{ field: "tgl_transaksi", title: "Tgl Transaksi", textAlign: "center" },
-				{ field: "uraian", title: "Keterangan", textAlign: "center" },
+				{ field: "tgl_transaksi_debet", title: "Tgl Transaksi Debet", textAlign: "center" },
+				{ field: "tgl_transaksi_kredit", title: "Tgl Transaksi Kredit", textAlign: "center" },
 				{ field: "nominal_debet", title: "Nominal Debet", textAlign: "center" },
 				{ field: "nominal_kredit", title: "Nominal Kredit", textAlign: "center" },
+				{ field: "uraian_debet", title: "Keterangan Debet", textAlign: "center" },
+				{ field: "uraian_kredit", title: "Keterangan Kredit", textAlign: "center" },
 			]
 		})
 	}

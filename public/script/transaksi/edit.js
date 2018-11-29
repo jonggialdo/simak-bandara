@@ -23,11 +23,12 @@ var Transaction = function(){
     var params = {
 		kodeDeb: $('#tbxKodeDebet').val(),
 		kodeKre: $('#tbxKodeKredit').val(),
-		tglTrans: $('#tbxTglTrans').val(),
+		tglTransDeb: $('#tbxTglTransDebet').val(),
+		tglTransKre: $('#tbxTglTransKredit').val(),
+		nominalDeb: $('#tbxNominalDebet').val(),
+		nominalKre: $('#tbxNominalKredit').val(),
 		uraianDeb: $('#tbxUraianDebet').val(),
 		uraianKre: $('#tbxUraianKredit').val(),
-		nominalDeb: $('#tbxNominalDebet').val(),
-		nominalKre: $('#tbxNominalKredit').val()
     }
 
     btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);

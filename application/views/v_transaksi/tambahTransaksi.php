@@ -345,12 +345,20 @@ License: You must have a valid license purchased only from themeforest(the above
 												</label>
 												<input type="text" class="form-control m-input">
 											</div>
+											<div class="col-lg-6">
+												<label>
+													Status
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input" placeholder= "Debet" readonly>
+												</div>
+											</div>
 										</div>
 										<div class="form-group m-form__group row">
 											<div class="col-lg-6">
 												<label>
 													Kode Rekening
-													<strong style="color:red" ;>*</strong>:
+													<strong style="color:red" ;>*</strong> :
 												</label>
 												<div class="m-input-icon m-input-icon--right">
 													<input type="number" class="form-control m-input" id="tbxKodeDebet" name="tbxKodeDebet">
@@ -374,20 +382,29 @@ License: You must have a valid license purchased only from themeforest(the above
 										<div class="form-group m-form__group row">
 											<div class="col-lg-6">
 												<label>
-													Deskripsi:
+													Keterangan Debet
+													<strong style: "color:red">*</strong> :
 												</label>
 												<div class="m-input-icon m-input-icon--right">
 													<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianDebet"></textarea>
 												</div>
 											</div>
 											<div class="col-lg-6">
-													<label>
-														Status
-													</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input" placeholder= "Debet" readonly>
+												<label>
+													Tanggal Transaksi Debet
+													<strong style: "color:red">*</strong> :
+												</label>
+												<div class="col-lg-12" style= "padding-left:0px; padding-right:0px">
+													<div class="input-group date">
+														<input type="text" class="form-control m-input datepicker" name="tbxTglTransDebet" id="tbxTglTransDebet" />
+														<div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-calendar"></i>
+															</span>
+														</div>
 													</div>
 												</div>
+											</div>
 										</div>
 									</div>
 
@@ -398,6 +415,14 @@ License: You must have a valid license purchased only from themeforest(the above
 													Nama Kode Rekening:
 												</label>
 												<input type="text" class="form-control m-input">
+											</div>
+											<div class="col-lg-6">
+												<label>
+													Status
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input" placeholder= "Kredit" readonly>
+												</div>
 											</div>
 										</div>
 										<div class="form-group m-form__group row">
@@ -428,20 +453,29 @@ License: You must have a valid license purchased only from themeforest(the above
 										<div class="form-group m-form__group row">
 											<div class="col-lg-6">
 												<label>
-													Deskripsi:
+													Keterangan Kredit
+													<strong style="color:red">*</strong> :
 												</label>
 												<div class="m-input-icon m-input-icon--right">
 													<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianKredit"></textarea>
 												</div>
 											</div>
 											<div class="col-lg-6">
-													<label>
-														Status
-													</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input" placeholder= "Kredit" readonly>
+												<label>
+													Tanggal Transaksi Kredit
+													<strong style: "color:red">*</strong> :
+												</label>
+												<div class="col-lg-12" style= "padding-left:0px; padding-right:0px">
+													<div class="input-group date">
+														<input type="text" class="form-control m-input datepicker" name="tbxTglTransKredit" id="tbxTglTransKredit" />
+														<div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-calendar"></i>
+															</span>
+														</div>
 													</div>
 												</div>
+											</div>
 										</div>
 									</div>
 
