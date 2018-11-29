@@ -22,6 +22,8 @@ class M_transaksi extends CI_Model{
     $this->db->update('transaksi',$data);
   }
 
+  
+
 }
 
  ?>
