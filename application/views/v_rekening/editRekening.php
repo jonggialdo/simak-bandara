@@ -336,25 +336,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php foreach($data as $d){ ?>
                                     <div class="m-portlet__body">
-
                                         <div class="form-group m-form__group row">
                                             <label class="col-form-label col-lg-3 col-sm-12">
                                                 Kode Rekening
-                                                <strong style="color:red" ;>*</strong>:
+                                                <strong style="color:red">*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="number" class="form-control m-input" minlength="5" maxlength="5" name="tbxprojectinitial" id="tbxProjectInitial" required>
+                                                <input type="number" class="form-control m-input" minlength='5' maxlength="5" name="tbxKodeRekening" id="tbxKodeRekening" value="<?php echo $d->kode_rekening?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
                                             <label class="col-form-label col-lg-3 col-sm-12">
-                                                Keterangan Rekening
+                                                Nama Rekening
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <input type="text" id="tbxProjectName" class="form-control m-input" maxlength="100" name="tbxProjectName" required>
+                                            <input type="text" id="tbxNamaKode" class="form-control m-input" maxlength="100" name="tbxNamaKode" value="<?php echo $d->nama_kode?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
@@ -363,14 +362,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
-                                                <select name="slsStatusRekening" id="slsStatusRekening" style="margin-top:5px" required>
-                                                    <option val='debet'>Debit</option>
-                                                    <option val='kredit'>Kredit</option>
+                                                <select name="slsStatusRekening" id="slsStatusRekening" style="margin-top:5px" required>   
+                                                    <!-- <option value='debet'>Debit</option>
+                                                    <option value='kredit'>Kredit</option> -->
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <input type="hidden" id="id" value="<?php echo $d->id?>">
+                                    <input type="hidden" id="statusRek" value="<?php echo $d->status; }?>">
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions m-form__actions">
                                             <div class="row">
@@ -379,13 +379,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         Batal
                                                     </button>
                                                     <button id="btnEditRek" class="btn btn-success">
-                                                        Tambah
+                                                        Ubah
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="id" value="<?php echo $id?>" />
                                 </form>
                                 <!--end::Form-->
                             </div>

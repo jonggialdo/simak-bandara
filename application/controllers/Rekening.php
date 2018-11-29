@@ -13,8 +13,10 @@ class Rekening extends CI_Controller {
 	}
 
 	public function editRekening(){ //parameternya id rekening
-		$id = $this->uri->segment(3);
-		$this->load->view('v_rekening/editRekening', ['id' => $id]);
+		$this->load->model('mstRekening');
+		$id = array('id' => $this->uri->segment(3));
+		$data['data'] = $this->mstRekening->GetSingleRekening($id);
+		$this->load->view('v_rekening/editRekening', $data);
 	}
 
 	public function tambahRekening(){
@@ -40,38 +42,31 @@ class Rekening extends CI_Controller {
 
 	public function Update(){
 		//ilham kurang id + name di form viewnya masih ga jelas
-		$id = $this->input->post('id');
-		$kode_rekening = $this->input->post('tbxKodeRekening');
-		$nama_kode = $this->input->post('tbxNamaKode');
-		$status = $this->input->post('slsStatusRekening');
-		$updated_date = date('y-m-d');
-		$updated_by = "siapa yang edit";
+		$formData = json_decode($this->input->post('data'), true);
 
 		$data = array(
-			'kode_rekening' => $kode_rekening,
-			'nama_kode' => $nama_kode,
-			'status' => $status,
-			'updated_date' => $updated_date,
-			'updated_by' => $updated_by 
+			'kode_rekening' => $formData['kode'],
+			'nama_kode' =>  $formData['nama'],
+			'status' =>  $formData['status'],
+			'updated_date' => date('y-m-d'),
+			'updated_by' => "siapa yang edit"
 		);
 
 		$where = array(
-			'id' => $id
+			'id' => $formData['id']
 		);
 
 		$this->load->model('mstRekening');
 		$result = $this->mstRekening->Update($data, $where);
 
-		if($result>0){
-			redirect('Rekening/index', 'refresh');
-		}
+		echo json_encode($formData);
 	}
 
 	public function Delete(){
 		$id = array('id' => $this->uri->segment(3));
 		$this->load->model('mstRekening');
 		$this->mstRekening->Delete($id);
-		redirect(base_url(), 'refresh');
+		redirect(base_url("Rekening"), 'refresh');
 	}
 
 	public function ListRekening(){
