@@ -23,13 +23,13 @@ class mstRekening extends CI_Model{
     public function GetRekening(){
         $result = $this->db->get('kode_rekening');
 
-        return $result->result_array();
+        return $result->result();
     }
 
     public function GetSingleRekening($data){
         $result = $this->db->get_where('kode_rekening', $data);
 
-        return $result->result_array();
+        return $result->result();
     }
 }
 ?>

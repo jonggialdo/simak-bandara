@@ -350,7 +350,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                         <div class="form-group m-form__group row">
                                             <label class="col-form-label col-lg-3 col-sm-12">
-                                                Keterangan Rekening
+                                                Nama Rekening
                                                 <strong style="color:red" ;>*</strong>:
                                             </label>
                                             <div class="col-lg-6">
