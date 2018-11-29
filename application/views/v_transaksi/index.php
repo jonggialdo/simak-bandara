@@ -314,7 +314,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="m-portlet__head-caption">
 										<div class="m-portlet__head-title">
 											<h3 class="m-portlet__head-text">
-												List Rekening
+												List Transaksi
 											</h3>
 										</div>
 									</div>
@@ -343,7 +343,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div> -->
 													<div class="col-md-5">
 														<div class="m-input-icon m-input-icon--left">
-															<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchRekening">
+															<input type="text" class="form-control m-input" placeholder="Cari Kode Transaksi" id="tbxSearchTransaksi">
 															<span class="m-input-icon__icon m-input-icon__icon--left">
 																<span>
 																	<i class="la la-search"></i>
@@ -354,11 +354,11 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-												<a href="<?php echo base_url('/Rekening/tambahRekening') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+												<a href="<?php echo base_url('/transaksi/tambahTransaksi') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 													<span>
 														<i class="fa fa-plus"></i>
 														<span>
-															Tambah Rekening
+															Tambah Transaksi
 														</span>
 													</span>
 												</a>
@@ -368,7 +368,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 									<!--end: Search Form -->
 									<!--begin: Datatable -->
-									<div class="m_datatable" id="divRekeningList"></div>
+									<div class="m_datatable" id="divTransaksiList"></div>
 									<!--end: Datatable -->
 								</div>
 							</div>
@@ -394,7 +394,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Page Snippets -->
 
 		<script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>public/script/rekening/index.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/script/transaksi/index.js" type="text/javascript"></script>
 </body>
 <!-- end::Body -->
 

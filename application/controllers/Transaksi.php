@@ -12,27 +12,30 @@ class Transaksi extends CI_Controller {
 
     $data['trx'] = $this->m_transaksi->getTransaksi();
 
-    $this->load->view('v_listTransaksi', $data);
+    $this->load->view('v_transaksi/index', $data);
 	}
 
-  public function viewTambahTransaksi(){
-    $this->load->view('v_addTransaksi');
+  public function tambahTransaksi(){
+    $this->load->view('v_transaksi/tambahTransaksi');
   }
 
-  public function tambahTransaksi(){
-    $this->load->model('m_transaksi');
+  public function Create(){
+		$this->load->model('m_transaksi');
+		
+		$formData = json_decode($this->input->post('data'), true);
 
 		$data = array(
-			'kd_debet' => $this->input->post('kd_debet'),
-			'kd_kredit' => $this->input->post('kd_kredit'),
-			'tgl_transaksi' => $this->input->post('tgl_transaksi'),
-			'uraian' => $this->input->post('uraian'),
-			'nominal_debet' => $this->input->post('nominal_debet'),
-			'nominal_kredit' => $this->input->post('nominal_kredit')
+			'kd_debet' => $formData['kodeDeb'],
+			'kd_kredit' => $formData['kodeKre'],
+			'tgl_transaksi' =>  date('d-M-y'),//$formData['tglTrans'],
+			'uraian_debet' => $formData['uraianDeb'],
+			'uraian_kredit' => $formData['uraianKre'],
+			'nominal_debet' => $formData['nominalDeb'],
+			'nominal_kredit' => $formData['nominalKre']
 		);
 
-		$this->m_dokumen->insertTransaksi($data);
-		redirect('index');
+		$this->m_transaksi->tambahTransaksi($data);
+		echo json_encode($formData);
   }
 
 	public function editTransaksi(){
@@ -42,8 +45,9 @@ class Transaksi extends CI_Controller {
 		$data = array(
 			'kd_debet' => $this->input->post('kd_debet'),
 			'kd_kredit' => $this->input->post('kd_kredit'),
-			'tgl_transaksi' => $this->input->post('tgl_transaksi'),
-			'uraian' => $this->input->post('uraian'),
+			'tgl_transaksi' => date('d-M-y'),
+			'uraian_debet' => $formData['uraianDeb'],
+			'uraian_kredit' => $formData['uraianKre'],
 			'nominal_debet' => $this->input->post('nominal_debet'),
 			'nominal_kredit' => $this->input->post('nominal_kredit')
 		);
@@ -54,8 +58,16 @@ class Transaksi extends CI_Controller {
 	public function hapusTransaksi(){
 		$id = $this->uri->segment(3);
 		$this->load->model('m_transaksi');
-		$this->m_dokumen->delete_dok($id);
+		$this->m_transaksi->hapusTransaksi($id);
 		redirect('index');
+	}
+
+	public function ListTransaksi(){
+		$this->load->model('m_transaksi');
+		$data = $this->m_transaksi->getTransaksi();
+		$data = array('data' => $data);
+
+		echo json_encode($data);
 	}
 
 }
