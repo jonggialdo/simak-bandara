@@ -24,8 +24,6 @@ class Transaksi extends CI_Controller {
 
 		$formData = json_decode($this->input->post('data'), true);
 
-		$formData = json_decode($this->input->post('data'), true);
-
 		$data = array(
 			'kd_debet' => $formData['kodeDeb'],
 			'kd_kredit' => $formData['kodeKre'],

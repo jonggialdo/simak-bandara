@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 10:37 AM
+-- Generation Time: Nov 29, 2018 at 02:45 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -32,14 +32,15 @@ CREATE TABLE `transaksi` (
   `id` int(11) NOT NULL,
   `kd_debet` int(11) NOT NULL,
   `kd_kredit` int(11) NOT NULL,
-  `tgl_transaksi` datetime NOT NULL,
+  `tgl_transaksi_debet` datetime NOT NULL,
+  `tgl_transaksi_kredit` datetime NOT NULL,
   `uraian_debet` text NOT NULL,
   `uraian_kredit` text NOT NULL,
   `nominal_debet` int(11) NOT NULL,
   `nominal_kredit` int(11) NOT NULL,
   `tgl_entry` datetime NOT NULL,
   `tgl_edit` datetime NOT NULL,
-  `created_by` int(11) NOT NULL
+  `created_by` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
