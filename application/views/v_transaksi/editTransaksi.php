@@ -315,13 +315,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="la la-gear"></i>
                                             </span>
                                             <h3 class="m-portlet__head-text">
-                                                Ubah Kode Rekening
+                                                Ubah Transaksi
                                             </h3>
                                         </div>
                                     </div>
                                 </div>
                                 <!--begin::Form-->
-                                <form class="m-form m-form--fit m-form--label-align-right" id="formEditRekening">
+                                <form class="m-form m-form--fit m-form--label-align-right" id="formEditTransaksi">
 
                                     <div class="m-form__content">
                                         <div class="m-alert m-alert--icon alert alert-danger m--hide" role="alert" id="msgEditFail">
@@ -337,56 +337,145 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
 
-                                    <div class="m-portlet__body">
+									<div class="m-portlet__body formDebet">
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Nama Kode Rekening:
+												</label>
+												<input type="text" class="form-control m-input">
+											</div>
+										</div>
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Kode Rekening
+													<strong style="color:red" ;>*</strong>:
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="number" class="form-control m-input" id="tbxKodeDebet" name="tbxKodeDebet">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<label>
+													Nominal Debet 
+													<strong style: "color:red">*</strong> :
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<span class="m-input-icon__icon m-input-icon__icon--right">
+														<span>
+															<i class="la la-dollar"></i>
+														</span>
+													</span>
+													<input type="text" class="form-control m-input" name="tbxNominalDebet">
+												</div>
+											</div>
+										</div>
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Deskripsi:
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianDebet"></textarea>
+												</div>
+											</div>
+											<div class="col-lg-6">
+													<label>
+														Status
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" placeholder= "Debet" readonly>
+													</div>
+												</div>
+										</div>
+									</div>
 
-                                        <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-3 col-sm-12">
-                                                Kode Rekening
-                                                <strong style="color:red" ;>*</strong>:
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="number" class="form-control m-input" minlength="5" maxlength="5" name="tbxprojectinitial" id="tbxProjectInitial" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-3 col-sm-12">
-                                                Keterangan Rekening
-                                                <strong style="color:red" ;>*</strong>:
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" id="tbxProjectName" class="form-control m-input" maxlength="100" name="tbxProjectName" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-3 col-sm-12">
-                                                Status Rekening
-                                                <strong style="color:red" ;>*</strong>:
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <select name="slsStatusRekening" id="slsStatusRekening" style="margin-top:5px" required>
-                                                    <option val='debet'>Debit</option>
-                                                    <option val='kredit'>Kredit</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+									<div class="m-portlet__body formKredit">
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Nama Kode Rekening:
+												</label>
+												<input type="text" class="form-control m-input">
+											</div>
+										</div>
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Kode Rekening 
+													<strong style="color:red" ;>*</strong> :
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="number" class="form-control m-input" id="tbxKodeKredit" name="tbxKodeKredit">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<label>
+													Nominal Kredit
+													<strong style: "color:red" ;>*</strong> :
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<span class="m-input-icon__icon m-input-icon__icon--right">
+														<span>
+															<i class="la la-dollar"></i>
+														</span>
+													</span>
+													<input type="text" class="form-control m-input" name="tbxNominalKredit" id="tbxNominalKredit">
+												</div>
+											</div>
+										</div>
+										<div class="form-group m-form__group row">
+											<div class="col-lg-6">
+												<label>
+													Deskripsi:
+												</label>
+												<div class="m-input-icon m-input-icon--right">
+													<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianKredit"></textarea>
+												</div>
+											</div>
+											<div class="col-lg-6">
+													<label>
+														Status
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" placeholder= "Kredit" readonly>
+													</div>
+												</div>
+										</div>
+									</div>
 
-                                    <div class="m-portlet__foot m-portlet__foot--fit">
+                                    <div class="m-portlet__foot m-portlet__foot--fit" id="btnPertama">
                                         <div class="m-form__actions m-form__actions">
                                             <div class="row">
                                                 <div class="col-lg-9 ml-lg-auto">
                                                     <button onclick="JavaScript: window.history.back(1); return false;" class="btn btn-secondary">
                                                         Batal
                                                     </button>
-                                                    <button id="btnEditRek" class="btn btn-success">
+                                                    <button type="button" id="btnDebet" class="btn btn-success">
+                                                        Tambah
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+									
+                                    <div class="m-portlet__foot m-portlet__foot--fit" id="sendData">
+                                        <div class="m-form__actions m-form__actions">
+                                            <div class="row">
+                                                <div class="col-lg-9 ml-lg-auto">
+                                                    <button onclick="JavaScript: window.history.back(1); return false;" class="btn btn-secondary">
+                                                        Batal
+                                                    </button>
+                                                    <button id="btnEditTr" class="btn btn-success">
                                                         Tambah
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="id" value="<?php echo $id?>" />
-                                </form>
+                                    <!-- <input type="hidden" name="id" value="asds"/> -->
+								</form>
                                 <!--end::Form-->
                             </div>
                             <!--end::Portlet-->
@@ -410,8 +499,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Page Snippets -->
         <script src="<?php echo base_url()?>public/assets/app/js/dashboard.js" type="text/javascript"></script>
         <!--end::Page Snippets -->
+
         <script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>public/script/rekening/edit.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/script/transaksi/edit.js" type="text/javascript"></script>
+
+        
 </body>
 <!-- end::Body -->
 

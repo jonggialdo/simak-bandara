@@ -267,7 +267,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </li>
                         <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
-                            <a href="#" class="m-menu__link ">
+                            <a href="<?php echo base_url('/rekening') ?>" class="m-menu__link ">
                                 <i class="m-menu__link-icon flaticon-book"></i>
                                 <span class="m-menu__link-title">
                                     <span class="m-menu__link-wrap">
@@ -279,7 +279,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </li>
                         <li class="m-menu__item  m-menu__item" aria-haspopup="true">
-                            <a href="#" class="m-menu__link ">
+                            <a href="<?php echo base_url('/transaksi') ?>" class="m-menu__link ">
                                 <i class="m-menu__link-icon flaticon-cart"></i>
                                 <span class="m-menu__link-title">
                                     <span class="m-menu__link-wrap">
