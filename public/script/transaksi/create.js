@@ -9,7 +9,9 @@ jQuery(document).ready(function () {
 		$(".formKredit").show();
 		$("#sendData").show();
 	})
-	Form.Init();
+	$("#btnAddTr").on('click', function(){
+		Form.Init();
+	})
 });
 
 var Control = {
@@ -55,7 +57,7 @@ var Transaction = function(){
 
     btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
-	console.log(JSON.stringify(params))
+	console.log(params);
 
     $.ajax({
         url: '/'+rootPage+'/Transaksi/Create',

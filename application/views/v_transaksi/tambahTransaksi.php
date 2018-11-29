@@ -361,7 +361,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<strong style="color:red" ;>*</strong> :
 												</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="number" class="form-control m-input" id="tbxKodeDebet" name="tbxKodeDebet">
+													<input type="number" class="form-control m-input" id="tbxKodeDebet" name="tbxKodeDebet" required>
 												</div>
 											</div>
 											<div class="col-lg-6">
@@ -375,7 +375,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															<i class="la la-dollar"></i>
 														</span>
 													</span>
-													<input type="text" class="form-control m-input" name="tbxNominalDebet">
+													<input type="text" class="form-control m-input" name="tbxNominalDebet" id="tbxNominalDebet" required>
 												</div>
 											</div>
 										</div>

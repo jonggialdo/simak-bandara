@@ -34,9 +34,8 @@ class Transaksi extends CI_Controller {
 			'nominal_debet' => $formData['nominalDeb'],
 			'nominal_kredit' => $formData['nominalKre'],
 			'tgl_entry' => date('d-M-y'),
-			'created_by' => '1',
+			'created_by' => 'siapa yang buat',
 		);
-
 		$this->m_transaksi->tambahTransaksi($data);
 		echo json_encode($formData);
   }
