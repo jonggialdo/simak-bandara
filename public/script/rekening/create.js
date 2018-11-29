@@ -32,7 +32,7 @@ var Transaction = function(){
         url: '/'+rootPage+'/Rekening/Create',
         type: 'POST',
         dataType: 'json',
-        data: JSON.stringify(params)
+        data: {data : JSON.stringify(params)}
     })
     .done(function(data, textStatus, jqXHR){
         Common.Alert.SuccessRoute("Berhasil Menambahkan Rekening Baru", '/simak-bandara/Rekening');
