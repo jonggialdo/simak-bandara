@@ -25,10 +25,13 @@ class Transaksi extends CI_Controller {
 		$formData = json_decode($this->input->post('data'), true);
 
 		$data = array(
+			'nama_transaksi' => $formData['namaTrans'],
+			'tgl_transaksi' =>  date('d-M-y'),//$formData['tglTrans'],
+			'total_transaksi' => $formData['totalTrans'],
+
 			'kd_debet' => $formData['kodeDeb'],
 			'kd_kredit' => $formData['kodeKre'],
-			'tgl_transaksi_debet' =>  date('d-M-y'),//$formData['tglTrans'],
-			'tgl_transaksi_kredit' =>  date('d-M-y'),//$formData['tglTrans'],
+			'tgl_transaksi' =>  date('d-M-y'),//$formData['tglTrans'],
 			'uraian_debet' => $formData['uraianDeb'],
 			'uraian_kredit' => $formData['uraianKre'],
 			'nominal_debet' => $formData['nominalDeb'],
@@ -47,13 +50,12 @@ class Transaksi extends CI_Controller {
 		$data = array(
 			'kd_debet' => $this->input->post('kd_debet'),
 			'kd_kredit' => $this->input->post('kd_kredit'),
-			'tgl_transaksi_debet' =>  date('d-M-y'),//$formData['tglTrans'],
-			'tgl_transaksi_kredit' =>  date('d-M-y'),//$formData['tglTrans'],
+			'tgl_transaksi' =>  date('d-M-y'),//$formData['tglTrans'],
 			'uraian_debet' => $formData['uraianDeb'],
 			'uraian_kredit' => $formData['uraianKre'],
 			'nominal_debet' => $this->input->post('nominal_debet'),
 			'nominal_kredit' => $this->input->post('nominal_kredit'),
-			'tgl_edit' => date('d-m-y')
+			'tgl_edit' => date('d-M-y')
 		);
 
 		$this->m_transaksi->editTransaksi($data,$id);
@@ -74,6 +76,14 @@ class Transaksi extends CI_Controller {
 		$data = array('data' => $data);
 
 		echo json_encode($data);
+	}
+
+	public function detailTransaksi(){
+		$this->load->view('v_transaksi/detailTransaksi');
+	}
+  
+	public function tambahDetailTransaksi(){
+	  $this->load->view('v_transaksi/tambahDetailTransaksi');
 	}
 
 }

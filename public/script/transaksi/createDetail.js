@@ -20,9 +20,9 @@ var Control = {
 
 var Form = {
 	Init: function () {
-		$("#formNewTransaksi").validate({
+		$("#formDebKre").validate({
 			invalidHandler: function (e, r) {
-				var i = $("#msgTransaksiFail");
+				var i = $("#msgDebKreFail");
 				i.removeClass("m--hide").show(), mApp.scrollTo(i, -200)
 			},
 			submitHandler: function (e) {
@@ -33,20 +33,15 @@ var Form = {
 }
 
 var Transaction = function(){
-    var btn = $('#btnAddTr');
+    var btn = $('#btnAddDetailTr');
     var params = {
-		namaTrans: $('#tbxNamaTransaksi').val(),
-		tglTrans: $('#tbxTglTransaksi').val(),
-		totalTrans: $('#tbxTotalTransaksi').val(),
-
-		// kodeDeb: $('#tbxKodeDebet').val(),
-		// kodeKre: $('#tbxKodeKredit').val(),
-		// tglTransDeb: $('#tbxTglTransDebet').val(),
-		// tglTransKre: $('#tbxTglTransKredit').val(),
-		// nominalDeb: $('#tbxNominalDebet').val(),
-		// nominalKre: $('#tbxNominalKredit').val(),
-		// uraianDeb: $('#tbxUraianDebet').val(),
-		// uraianKre: $('#tbxUraianKredit').val(),
+		kodeDeb: $('#tbxKodeDebet').val(),
+		kodeKre: $('#tbxKodeKredit').val(),
+		tglTrans: $('#tbxTglTrans').val(),
+		nominalDeb: $('#tbxNominalDebet').val(),
+		nominalKre: $('#tbxNominalKredit').val(),
+		uraianDeb: $('#tbxUraianDebet').val(),
+		uraianKre: $('#tbxUraianKredit').val(),
     }
 
     btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);

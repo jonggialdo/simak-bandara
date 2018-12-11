@@ -315,16 +315,30 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="la la-gear"></i>
                                             </span>
                                             <h3 class="m-portlet__head-text">
-                                                Tambah Transaksi Baru
+                                                Tambah Debet / Kredit Baru
                                             </h3>
                                         </div>
-                                    </div>
+									</div>
+									<div class="m-portlet__head-tools">
+										<ul class="nav nav-tabs m-tabs-line m-tabs-line--right" role="tablist">
+											<li class="nav-item m-tabs__item">
+												<a class="nav-link m-tabs__link active" data-toggle="tab" href="#form_debet" role="tab">
+													Debet
+												</a>
+											</li>
+											<li class="nav-item m-tabs__item">
+												<a class="nav-link m-tabs__link" data-toggle="tab" href="#form_kredit" role="tab">
+													Kredit
+												</a>
+											</li>
+										</ul>
+									</div>
                                 </div>
                                 <!--begin::Form-->
-                                <form class="m-form m-form--fit m-form--label-align-right" id="formNewTransaksi">
+                                <form class="m-form m-form--fit m-form--label-align-right" id="formDebKre">
 
                                     <div class="m-form__content">
-                                        <div class="m-alert m-alert--icon alert alert-danger m--hide" role="alert" id="msgTransaksiFail">
+                                        <div class="m-alert m-alert--icon alert alert-danger m--hide" role="alert" id="msgDebKreFail">
                                             <div class="m-alert__icon">
                                                 <i class="la la-warning"></i>
                                             </div>
@@ -336,45 +350,134 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="m-portlet__body">
-
-                                        <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-3 col-sm-12">
-                                                Nama Transaksi
-                                                <strong style="color:red" ;>* </strong>:
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control m-input" name="tbxNamaTransaksi" id="tbxNamaTransaksi" required>
-                                            </div>
-										</div>
-										<div class="form-group m-form__group row">
-											<label class="col-form-label col-lg-3 col-sm-12">
-												Tanggal Transaksi
-												<strong style: "color:red">*</strong> :
-											</label>
-											<div class="col-lg-6" style= "padding-left:0px; padding-right:0px">
-												<div class="input-group date">
-													<input type="text" class="form-control m-input datepicker" name="tbxTglTransaksi" id="tbxTglTransaksi" required />
-													<div class="input-group-append">
-														<span class="input-group-text">
-															<i class="la la-calendar"></i>
+									<div class="m-portlet__body tab-content">
+										<div class="m-portlet__body tab-pane active" id="form_debet">
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Nama Kode Rekening:
+													</label>
+													<input type="text" class="form-control m-input">
+												</div>
+												<div class="col-lg-6">
+													<label>
+														Status
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" placeholder= "Debet" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Kode Rekening
+														<strong style="color:red" ;>*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="number" class="form-control m-input" id="tbxKodeDebet" name="tbxKodeDebet" required>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<label>
+														Nominal Debet 
+														<strong style: "color:red">*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<span class="m-input-icon__icon m-input-icon__icon--right">
+															<span>
+																<i class="la la-dollar"></i>
+															</span>
 														</span>
+														<input type="text" class="form-control m-input" name="tbxNominalDebet" id="tbxNominalDebet" required>
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Keterangan Debet
+														<strong style: "color:red">*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianDebet"></textarea>
 													</div>
 												</div>
 											</div>
 										</div>
-                                        <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-3 col-sm-12">
-                                                Total Transaksi
-                                                <strong style="color:red" ;>*</strong>:
-                                            </label>
-                                            <div class="col-lg-6">
-                                                <input type="number" id="tbxTotalTransaksi" class="form-control m-input" name="tbxTotalTransaksi" required>
-                                            </div>
-                                        </div>
-                                    </div>
 
+										<div class="m-portlet__body tab-pane" id="form_kredit">
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Nama Kode Rekening:
+													</label>
+													<input type="text" class="form-control m-input">
+												</div>
+												<div class="col-lg-6">
+													<label>
+														Status
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" placeholder= "Kredit" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Kode Rekening 
+														<strong style="color:red" ;>*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="number" class="form-control m-input" id="tbxKodeKredit" name="tbxKodeKredit">
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<label>
+														Nominal Kredit
+														<strong style: "color:red" ;>*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<span class="m-input-icon__icon m-input-icon__icon--right">
+															<span>
+																<i class="la la-dollar"></i>
+															</span>
+														</span>
+														<input type="text" class="form-control m-input" name="tbxNominalKredit" id="tbxNominalKredit">
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
+													<label>
+														Keterangan Kredit
+														<strong style="color:red">*</strong> :
+													</label>
+													<div class="m-input-icon m-input-icon--right">
+														<textarea type="text" class="form-control m-input" rows="4" id="tbxUraianKredit"></textarea>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<label>
+														Tanggal Transaksi
+														<strong style: "color:red">*</strong> :
+													</label>
+													<div class="col-lg-12" style= "padding-left:0px; padding-right:0px">
+														<div class="input-group date">
+															<input type="text" class="form-control m-input datepicker" name="tbxTglTrans" id="tbxTglTrans" />
+															<div class="input-group-append">
+																<span class="input-group-text">
+																	<i class="la la-calendar"></i>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    									
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions m-form__actions">
                                             <div class="row">
@@ -382,7 +485,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <button onclick="JavaScript: window.history.back(1); return false;" class="btn btn-secondary">
                                                         Batal
                                                     </button>
-                                                    <button id="btnAddTr" class="btn btn-success">
+                                                    <button id="btnAddDetailTr" class="btn btn-success">
                                                         Tambah
                                                     </button>
                                                 </div>
@@ -390,7 +493,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                     <!-- <input type="hidden" name="id" value="asds"/> -->
-                                </form>
+								</form>
                                 <!--end::Form-->
                             </div>
                             <!--end::Portlet-->
