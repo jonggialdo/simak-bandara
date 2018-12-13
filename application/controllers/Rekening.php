@@ -35,8 +35,21 @@ class Rekening extends CI_Controller {
 			'created_date' => date('y-m-d'),
 			'created_by' => "siapa yang buat"
 		);
-		$data = $this->mstRekening->Create($data);
-		
+
+		$this->db->where('kode_rekening', $data['kode_rekening']);
+		$this->db->from('kode_rekening'); 
+		$this->db->limit(1);
+		$query = $this->db->get();
+		$result = $query->result();
+
+		if($result == null) {
+			$data = $this->mstRekening->Create($data);
+			$formData['message'] = "Berhasil Menambahkan Kode Rekening";
+		}
+		else {
+			$formData['message'] = "Kode Rekening Sudah Pernah Digunakan";
+		}	
+
 		echo json_encode($formData);
 	}
 
@@ -56,9 +69,21 @@ class Rekening extends CI_Controller {
 			'id' => $formData['id']
 		);
 
-		$this->load->model('mstRekening');
-		$result = $this->mstRekening->Update($data, $where);
+		$this->db->where('kode_rekening', $data['kode_rekening']);
+		$this->db->from('kode_rekening'); 
+		$this->db->limit(1);
+		$query = $this->db->get();
+		$result = $query->result();
 
+		if($result == null) {
+			$this->load->model('mstRekening');
+			$result = $this->mstRekening->Update($data, $where);
+			$formData['message'] = "Berhasil Merubah Kode Rekening";
+		}
+		else {
+			$formData['message'] = "Kode Rekening Sudah Pernah Digunakan";
+		}
+		
 		echo json_encode($formData);
 	}
 
