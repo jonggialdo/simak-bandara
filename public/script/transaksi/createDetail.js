@@ -7,6 +7,7 @@ jQuery(document).ready(function () {
 var Control = {
 	Init: function () {
 		Control.BootstrapDatepicker();
+		Control.Select2();
 	},
 	BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
@@ -16,10 +17,29 @@ var Control = {
 			}
 		})
 	},
+	Select2: function(){
+		$.ajax({
+			url: '/'+rootPage+'/Rekening/ListRekening',
+			type: "GET",
+			dataType: 'json',
+		}).done(function (data, textStatus, jqXHR) {
+			console.log(data);
+			$("#slsRekening").html("<option></option>");
+			$.each(data, function (i, item) {
+				$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+			})
+			$("#slsRekening").select2({ placeholder: "Pilih Kode Rekening" });
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			Common.Alert.Error(errorThrown);
+		})
+	},
 }
 
 var Form = {
-	Init: function () {
+	Init: function(){
+		Form.Check();
+	},
+	Check: function () {
 		$("#formDebKre").validate({
 			invalidHandler: function (e, r) {
 				var i = $("#msgDebKreFail");
@@ -29,7 +49,7 @@ var Form = {
 				Transaction();
 			}
 		})
-	}
+	},
 }
 
 var Transaction = function(){

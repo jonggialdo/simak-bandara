@@ -3,7 +3,80 @@ var rootPage = window.location.pathname.split('/')[1]
 //== Class Initialization
 jQuery(document).ready(function () {
 	Table.Init();
+	Control.Init();
 });
+
+var Control = {
+	Init: function () {
+		Control.BootstrapDatepicker();
+		Control.Modal();
+		Control.Select2();
+	},
+	BootstrapDatepicker: function () {
+		$(".datepicker").datepicker({
+			format: 'dd-M-yyyy',
+			todayBtn: "linked", clearBtn: !0, todayHighlight: !0, templates: {
+				leftArrow: '<i class="la la-angle-left"></i>', rightArrow: '<i class="la la-angle-right"></i>'
+			}
+		})
+	},
+	Modal: function(){
+		$("#btnFormModal").on("click", function(){
+			$("#formDetail").modal({ backdrop: "static" });
+			Control.Button();
+		})
+	},
+	Select2: function(){
+		$("#slsStatus").select2();
+		$.ajax({
+			url: '/'+rootPage+'/Rekening/ListRekening',
+			type: "GET",
+			dataType: 'json',
+		}).done(function (data, textStatus, jqXHR) {
+			$("#slsRekening").html("<option></option>");
+			$.each(data.data, function (i, item) {
+				$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+			})
+			$("#slsRekening").select2({ placeholder: "Pilih Kode Rekening", float:"left" });
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			Common.Alert.Error(errorThrown);
+		})
+	},
+	Button:function(){
+		$("#btnAddDetailTr").on("clicl", function(){
+			Transaction();
+		})
+	}
+}
+
+var Transaction = function(){
+    var btn = $('#btnAddDetailTr');
+    var params = {
+		kodeRek: $('#slsRekening').val(),
+		status: $('#slsStatus').val(),
+		tglTrans: $('#tbxTglTrans').val(),
+		nominal: $('#tbxNominal').val(),
+		keterangan: $('#tbxKeterangan').val(),
+    }
+
+    btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
+
+	console.log(params);
+
+    $.ajax({
+        url: '/'+rootPage+'/Transaksi/Create',
+        type: 'POST',
+        dataType: 'json',
+        data: {data: JSON.stringify(params)}
+    })
+    .done(function(data, textStatus, jqXHR){
+        Common.Alert.SuccessRoute("Berhasil Menambahkan Transaksi Baru", '/simak-bandara/transaksi');
+		btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		Common.Alert.Error(errorThrown);
+		btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+	})
+}
 
 var Table = {
 	Init: function () {
@@ -53,13 +126,11 @@ var Table = {
 						return strBuilder;
 					}
 				},
-				{ field: "kd_debet", title: "Kode Debet", textAlign: "center" },
-				{ field: "kd_kredit", title: "Kode Kredit", textAlign: "center" },
+				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
 				{ field: "tgl_transaksi", title: "Tgl Transaksi", textAlign: "center" },
-				{ field: "nominal_debet", title: "Nominal Debet", textAlign: "center" },
-				{ field: "nominal_kredit", title: "Nominal Kredit", textAlign: "center" },
-				{ field: "uraian_debet", title: "Keterangan Debet", textAlign: "center" },
-				{ field: "uraian_kredit", title: "Keterangan Kredit", textAlign: "center" },
+				{ field: "nominal", title: "Nominal", textAlign: "center" },
+				{ field: "keterangan", title: "Keterangan", textAlign: "center" },
 			]
 		})
 	}
