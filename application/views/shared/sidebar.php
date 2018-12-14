@@ -7,36 +7,36 @@
      m-menu-dropdown-timeout="500">
         <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
             <li class="m-menu__item  m-menu__item sidebarActive" aria-haspopup="true">
-                <a href="#" class="m-menu__link ">
+                <a href="<?php echo base_url('/dashboard/bukuBesar') ?>" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-graphic-2"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                Neraca
+                                Buku Besar
                             </span>
                         </span>
                     </span>
                 </a>
             </li>
             <li class="m-menu__item  m-menu__item sidebarActive" aria-haspopup="true">
-                <a href="#" class="m-menu__link ">
-                    <i class="m-menu__link-icon flaticon-diagram"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                Rugi / Laba
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </li>
-            <li class="m-menu__item  m-menu__item sidebarActive" aria-haspopup="true">
-                <a href="#" class="m-menu__link ">
+                <a href="<?php echo base_url('/dashboard/Transaksi') ?>" id="dashboard" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-coins"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                Posisi Kas
+                                List Transaksi
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li class="m-menu__item  m-menu__item sidebarActive" aria-haspopup="true">
+                <a href="<?php echo base_url('/dashboard') ?>" id="dashboard" class="m-menu__link ">
+                    <i class="m-menu__link-icon flaticon-coins"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                Dashboard
                             </span>
                         </span>
                     </span>
