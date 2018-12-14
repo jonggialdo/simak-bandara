@@ -324,23 +324,8 @@ License: You must have a valid license purchased only from themeforest(the above
 									<!--begin: Search Form -->
 									<div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
 										<div class="row align-items-center">
-											<div class="col-xl-8 order-2 order-xl-1">
+											<div class="col-xl-7 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
-													<!-- <div class="col-md-5">
-														<div class="m-form__group m-form__group--inline">
-															<div class="m-form__label">
-																<label class="m-label m-label--single">
-																	<span>
-																		Kode Awal
-																	</span>
-																</label>
-															</div>
-															<div class="m-form__control">
-																<select class="form-control m-bootstrap-select" id="slsDigitAwalRek"></select>
-															</div>
-														</div>
-														<div class="d-md-none m--margin-bottom-10"></div>
-													</div> -->
 													<div class="col-md-5">
 														<div class="m-input-icon m-input-icon--left">
 															<input type="text" class="form-control m-input" placeholder="Cari Kode Transaksi" id="tbxSearchTransaksi">
@@ -353,22 +338,116 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-												<a href="<?php echo base_url('/transaksi/tambahTransaksi') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-													<span>
-														<i class="fa fa-plus"></i>
+											<div class="col-xl-5 order-1 order-xl-2 m--align-right row">
+												<div class="modal fade" id="formTransaksi" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">
+																	Tambah Transaksi
+																</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">
+																		&times;
+																	</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Kode Rekening <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2" id="slsRekening" style="width:560px; text-align:center" required></select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Status <span style="color:red">*</span> :
+																	</label>
+																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
+																			<option value="" disabled selected style="display:none">Pilih Status</option>
+																			<option value="1">Debet</option>
+																			<option value="2">Kredit</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Tanggal Transaksi<span style= "color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																			<input type="text" class="form-control m-input datepicker" placeholder="Tanggal Transaksi" name="tbxTglTrans" id="tbxTglTrans" required />
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-calendar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Nominal<span style= "color:red" ;>*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12 m-input-icon m-input-icon--right" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																		<input type="text" class="form-control m-input" placeholder="Nominal (Rp)" name="tbxNominal" id="tbxNominal" required/>
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-dollar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Keterangan <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<textarea class="form-control" placeholder="Keterangan" name="tbxKeterangan" id="tbxKeterangan" required></textarea>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">
+																	Batal
+																</button>
+																<button type="button" class="btn btn-success" id="btnAddDetailTr">
+																	Tambah
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div style="display:inline-block">
+													<a id="btnConfirm" href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 														<span>
-															Tambah Transaksi
+															<i class="fa fa-check"></i>
+															<span>
+																Konfirmasi
+															</span>
 														</span>
-													</span>
-												</a>
+													</a>
+													<a id="btnFormModal" href="#" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-toggle="modal" data-target="#formTransaksi">
+														<span>
+															<i class="fa fa-plus"></i>
+															<span>
+																Tambah Transaksi
+															</span>
+														</span>
+													</a>
+												</div>
 												<div class="m-separator m-separator--dashed d-xl-none"></div>
 											</div>
 										</div>
 									</div>
 									<!--end: Search Form -->
 									<!--begin: Datatable -->
-									<div class="m_datatable" id="divTransaksiList"></div>
+									<div class="m_datatable" id="divListTransaksi"></div>
 									<!--end: Datatable -->
 								</div>
 							</div>
