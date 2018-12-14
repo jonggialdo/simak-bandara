@@ -43,7 +43,7 @@ var Control = {
 		})
 	},
 	Button:function(){
-		$("#btnAddDetailTr").on("clicl", function(){
+		$("#btnAddDetailTr").on("click", function(){
 			Transaction();
 		})
 	}

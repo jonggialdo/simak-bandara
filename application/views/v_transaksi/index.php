@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4
 Author: KeenThemes
 Website: http://www.keenthemes.com/
@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 							<div class="m-stack__item m-stack__item--middle m-brand__tools">
 								<!-- BEGIN: Left Aside Minimize Toggle -->
-								<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block 
+								<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block
 					 ">
 									<span></span>
 								</a>
@@ -368,8 +368,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
 																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
 																			<option value="" disabled selected style="display:none">Pilih Status</option>
-																			<option value="1">Debet</option>
-																			<option value="2">Kredit</option>
+																			<option value="debet">Debet</option>
+																			<option value="kredit">Kredit</option>
 																		</select>
 																	</div>
 																</div>

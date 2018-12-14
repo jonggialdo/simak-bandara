@@ -36,33 +36,24 @@ class Transaksi extends CI_Controller {
   public function Create(){
 		$this->load->model('m_transaksi');
 
+		$formData = json_decode($this->input->post('data'), true);
+
 		$id_transaksi = $formData['id'];
-		$kd_debet = $formData['kodeDeb'];
-		$kd_kredit = $formData['kodeKre'];
-		$tgl_transaksi =  date('d-M-y');
-		$uraian_debet = $formData['uraianDeb'];
-		$uraian_kredit = $formData['uraianKre'];
-		$nominal_debet = $formData['nominalDeb'];
-		$nominal_kredit = $formData['nominalKre'];
-
-		if($formData[] == )
-
-		$total_debet = '1';
-		$total_kredit = '1';
-
+		$kodeRek= $formData['kodeRek'];
+		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
+		$status = $formData['status'];
+		$keterangan = $formData['keterangan'];
+		$nominal = $formData['nominal'];
 
 		$data_listTransaksi = array(
-			'kd_debet' => $kd_debet,
-			'kd_kredit' => $kd_kredit,
+			'kodeRek' => $kodeRek,
 			'tgl_transaksi' => $tgl_transaksi,
-			'uraian_debet' => $uraian_debet,
-			'uraian_kredit' => $uraian_kredit,
-			'nominal_debet' => $nominal_debet,
-			'nominal_kredit' => $nominal_kredit,
+			'status' => $status,
+			'keterangan' => $keterangan,
+			'nominal' => $nominal,
 			'id_transaksi' => $id_transaksi,
 		);
 
-		$this->m_transaksi->tambahTransaksi($data_transaksi);
 		$this->m_transaksi->tambahListTransaksi($data_listTransaksi);
 		echo json_encode($formData);
   }
@@ -71,15 +62,20 @@ class Transaksi extends CI_Controller {
 		$this->load->model('m_transaksi');
 		$id  = $this->uri->segment(3);
 
-		$data = array(
-			'kd_debet' => $this->input->post('kd_debet'),
-			'kd_kredit' => $this->input->post('kd_kredit'),
-			'tgl_transaksi' =>  date('d-M-y'),//$formData['tglTrans'],
-			'uraian_debet' => $formData['uraianDeb'],
-			'uraian_kredit' => $formData['uraianKre'],
-			'nominal_debet' => $this->input->post('nominal_debet'),
-			'nominal_kredit' => $this->input->post('nominal_kredit'),
-			'tgl_edit' => date('d-M-y')
+		$id_transaksi = $formData['id'];
+		$kodeRek= $formData['kodeRek'];
+		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
+		$status = $formData['status'];
+		$keterangan = $formData['keterangan'];
+		$nominal = $formData['nominal'];
+
+		$data_listTransaksi = array(
+			'kodeRek' => $kodeRek,
+			'tgl_transaksi' => $tgl_transaksi,
+			'status' => $status,
+			'keterangan' => $keterangan,
+			'nominal' => $nominal,
+			'id_transaksi' => $id_transaksi,
 		);
 
 		$this->m_transaksi->editTransaksi($data,$id);
