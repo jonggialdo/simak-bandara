@@ -12,7 +12,7 @@ class Rekening extends CI_Controller {
 		$this->load->view('v_rekening/index');
 	}
 
-	public function editRekening(){ //parameternya id rekening
+	public function editRekening(){
 		$this->load->model('mstRekening');
 		$id = array('id' => $this->uri->segment(3));
 		$data['data'] = $this->mstRekening->GetSingleRekening($id);
@@ -27,8 +27,8 @@ class Rekening extends CI_Controller {
 		$this->load->model('mstRekening');
 
 		$formData = json_decode($this->input->post('data'), true);
-
-		$data = array (
+		
+		$data = array (	
 			'kode_rekening' => $formData['kode'],
 			'nama_kode' =>  $formData['nama'],
 			'status' =>  $formData['status'],
@@ -37,7 +37,7 @@ class Rekening extends CI_Controller {
 		);
 
 		$this->db->where('kode_rekening', $data['kode_rekening']);
-		$this->db->from('kode_rekening');
+		$this->db->from('kode_rekening'); 
 		$this->db->limit(1);
 		$query = $this->db->get();
 		$result = $query->result();
@@ -48,13 +48,12 @@ class Rekening extends CI_Controller {
 		}
 		else {
 			$formData['message'] = "Kode Rekening Sudah Pernah Digunakan";
-		}
+		}	
 
 		echo json_encode($formData);
 	}
 
 	public function Update(){
-		//ilham kurang id + name di form viewnya masih ga jelas
 		$formData = json_decode($this->input->post('data'), true);
 
 		$data = array(
@@ -70,7 +69,7 @@ class Rekening extends CI_Controller {
 		);
 
 		$this->db->where('kode_rekening', $data['kode_rekening']);
-		$this->db->from('kode_rekening');
+		$this->db->from('kode_rekening'); 
 		$this->db->limit(1);
 		$query = $this->db->get();
 		$result = $query->result();
@@ -83,7 +82,7 @@ class Rekening extends CI_Controller {
 		else {
 			$formData['message'] = "Kode Rekening Sudah Pernah Digunakan";
 		}
-
+		
 		echo json_encode($formData);
 	}
 
@@ -102,3 +101,4 @@ class Rekening extends CI_Controller {
 		echo json_encode($data);
 	}
 }
+
