@@ -1,5 +1,5 @@
 var rootPage = window.location.pathname.split('/')[1]
-var done = false;
+
 //== Class Initialization
 jQuery(document).ready(function () {
 	Table.Init($("#tbxID").val());
@@ -22,83 +22,79 @@ var Control = {
 	},
 	Modal: function(){
 		$("#btnFormModal").on("click", function(){
+			$("#divRekening").hide();
 			$("#formTransaksi").modal({ backdrop: "static" });
-			// $("#formTransaksi").on('hide.modal.bs', function(){
-			// 	// Control.Modal();
-			// })
-			$("#btnBatal").on("click", function(){
-						//$(this).modal("toggle");
-						Control.Select2();
-						$("#slsRekening").val("");
-						$("#slsStatus").val("");
-						$('#tbxTglTrans').val("");
-						$('#tbxNominal').val("");
-						$('#tbxKeterangan').val("");
-			})
-			Control.Button();
+		});
+		
+		$("#btnBatal").on("click", function(){
+			Control.Select2();
+			$("#slsRekening").val("");
+			$("#slsStatus").val("");
+			$('#tbxTglTrans').val("");
+			$('#tbxNominal').val("");
+			$('#tbxKeterangan').val("");
+		});
+
+		$("#btnAddDetailTr").on("click", function(){
+			Transaction();
 		})
 	},
 	Select2: function(){
-		$("#slsStatus").html("");
-		$("#slsStatus").append('<option value="" disabled selected style="display:none">Pilih Status</option><option value="debet">Debet</option><option value="kredit">Kredit</option>');
-		$("#slsStatus").select2();
-		$.ajax({
-			url: '/'+rootPage+'/Rekening/ListRekening',
-			type: "GET",
-			dataType: 'json',
-		}).done(function (data, textStatus, jqXHR) {
-			$("#slsRekening").html("<option></option>");
-			$.each(data.data, function (i, item) {
-				$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+		$("#slsStatus").html("<option></option>");
+		$("#slsStatus").append('<option value="debet">Debet</option><option value="kredit">Kredit</option>');
+		$("#slsStatus").select2({placeholder: "Pilih Tipe Rekening", minimumResultsForSearch: Infinity});
+		$("#slsStatus").on("change", function(){
+			$("#divRekening").show();
+			$.ajax({
+				url: '/'+rootPage+'/Rekening/ListRekening',
+				type: "GET",
+				dataType: 'json',
+			}).done(function (data, textStatus, jqXHR) {
+				$("#slsRekening").html("<option></option>");
+				$.each(data.data, function (i, item) {
+					$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+				})
+				$("#slsRekening").select2({ placeholder: "Pilih Kode Rekening", float:"left" });
+			}).fail(function (jqXHR, textStatus, errorThrown) {
+				Common.Alert.Error(errorThrown);
 			})
-			$("#slsRekening").select2({ placeholder: "Pilih Kode Rekening", float:"left" });
-		}).fail(function (jqXHR, textStatus, errorThrown) {
-			Common.Alert.Error(errorThrown);
-		})
-	},
-	Button:function(){
-		$("#btnAddDetailTr").on("click", function(){
-			Transaction();
 		})
 	}
 }
 
-var Transaction = function(){
-    var btn = $('#btnAddDetailTr');
-    var params = {
+var Transaction = function(done){
+	var btn = $('#btnAddDetailTr');
+	var params = {
 		id: $("#tbxID").val(),
 		kodeRek: $('#slsRekening').val(),
 		status: $('#slsStatus').val(),
 		tglTrans: $('#tbxTglTrans').val(),
 		nominal: $('#tbxNominal').val(),
 		keterangan: $('#tbxKeterangan').val(),
-    }
-
-		console.log(params);
-
-    btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
-
-  //   $.ajax({
-  //       url: '/'+rootPage+'/Transaksi/Create',
-  //       type: 'POST',
-  //       dataType: 'json',
-  //       data: {data: JSON.stringify(params)}
-  //   })
-  //   .done(function(data, textStatus, jqXHR){
-	// 			 $("#divListTransaksi").mDatatable('reload');
-	// 			 Control.Select2();
-	// 			 $("#slsRekening").val("");
- 	// 			 $("#slsStatus").val("");
- 	// 			 $('#tbxTglTrans').val("");
- 	// 			 $('#tbxNominal').val("");
- 	// 			 $('#tbxKeterangan').val("");
-	// 			  $("#formTransaksi").modal("toggle");
-	// 				Table.Init(data.id);
-	// 	btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
-	// }).fail(function (jqXHR, textStatus, errorThrown) {
-	// 	Common.Alert.Error(errorThrown);
-	// 	btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
-	// })
+	}
+	console.log(params);
+	btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
+			
+	$.ajax({
+			url: '/'+rootPage+'/Transaksi/Create',
+			type: 'POST',
+			dataType: 'json',
+			data: {data: JSON.stringify(params)}
+	}).done(function(data, textStatus, jqXHR){
+					$("#divListTransaksi").mDatatable('reload');
+					Control.Select2();
+					$("#slsRekening").val("");
+					$("#slsStatus").val("");
+					$('#tbxTglTrans').val("");
+					$('#tbxNominal').val("");
+					$('#tbxKeterangan').val("");
+					$("#formTransaksi").modal("toggle");
+					Table.Init(data.id);
+		btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		Common.Alert.Error(errorThrown);
+		btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+		})
 }
 
 var Table = {

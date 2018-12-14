@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<div class="col-xl-5 order-1 order-xl-2 m--align-right row">
-												<div class="modal fade" id="formTransaksi" role="dialog">
+												<div class="modal hide fade" id="formTransaksi" role="dialog">
 													<div class="modal-dialog modal-lg" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -76,19 +76,19 @@ License: You must have a valid license purchased only from themeforest(the above
 															<div class="modal-body">
 																<div class="form-group m-form__group row">
 																	<label class="col-form-label col-lg-3 col-sm-12">
-																		Kode Rekening <span style="color:red">*</span> :
-																	</label>
-																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
-																		<select class="form-control m-select2" id="slsRekening" style="width:560px; text-align:center" required></select>
-																	</div>
-																</div>
-																<div class="form-group m-form__group row">
-																	<label class="col-form-label col-lg-3 col-sm-12">
-																		Status <span style="color:red">*</span> :
+																		Debet / Kredit <span style="color:red">*</span> :
 																	</label>
 																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
 																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
 																		</select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row" id="divRekening">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Kode Rekening <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2" id="slsRekening" style="width:560px; text-align:center" required></select>
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
