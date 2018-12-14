@@ -32,7 +32,8 @@
       }
       else {
         $error = array('error' => "Username atau Password Salah");
-        $this->load-view('v_login', $error);
+        echo $error['error'];
+        //$this->load-view('v_login', $error);
       }
       // if($this->input->post('submit')){
       //   if($this->m_login->cek_login()){
