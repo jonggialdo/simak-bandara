@@ -27,19 +27,16 @@ class Transaksi extends CI_Controller {
 		$this->m_transaksi->tambahParentTransaksi($data_parent);
 		$query = $this->m_transaksi->getIDTransaksi();
 
-		// var_dump($query);die();
-
-		foreach($query as $key){
-			$id = $key->id;
-		}
-		var_dump($id);die();
-
-    $this->load->view('v_transaksi/tambahTransaksi');
+		$data = array(
+			'id' => $query->id,
+		);
+    $this->load->view('v_transaksi/tambahTransaksi', $data);
   }
 
   public function Create(){
 		$this->load->model('m_transaksi');
 
+		$id_transaksi = $formData['id'];
 		$kd_debet = $formData['kodeDeb'];
 		$kd_kredit = $formData['kodeKre'];
 		$tgl_transaksi =  date('d-M-y');
@@ -47,6 +44,8 @@ class Transaksi extends CI_Controller {
 		$uraian_kredit = $formData['uraianKre'];
 		$nominal_debet = $formData['nominalDeb'];
 		$nominal_kredit = $formData['nominalKre'];
+
+		if($formData[] == )
 
 		$total_debet = '1';
 		$total_kredit = '1';

@@ -21,7 +21,9 @@ class M_transaksi extends CI_Model{
     // $user = $this->session->userdata('username');
     $this->db->order_by('id', 'DESC');
     // $this->db->get_where('username', $user);
-    return $this->db->get('transaksi')->row();
+    $q = $this->db->get('transaksi')->row();
+    return $q;
+
   }
 
   public function tambahTransaksi($data){
