@@ -13,6 +13,15 @@ class M_transaksi extends CI_Model{
     return $q->result();
   }
 
+  public function getListTransaksiInput($id_transaksi){
+    // $user = $this->session->userdata('username');
+
+    $this->db->order_by('id','DESC');
+    $this->db->where('id', $id_transaksi);
+    // $this->db->where('username', $user);
+    return $this->db->get('transaksi')->result();
+  }
+
   public function tambahParentTransaksi($data_parent){
     $this->db->insert('transaksi', $data_parent);
   }
@@ -20,10 +29,10 @@ class M_transaksi extends CI_Model{
   public function getIDTransaksi(){
     // $user = $this->session->userdata('username');
     $this->db->order_by('id', 'DESC');
+    $this->db->limit(1);
     // $this->db->get_where('username', $user);
-    $q = $this->db->get('transaksi')->row();
+    $q = $this->db->get('transaksi')->result_array();
     return $q;
-
   }
 
   public function tambahTransaksi($data_listTransaksi){

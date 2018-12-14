@@ -52,6 +52,7 @@ var Control = {
 var Transaction = function(){
     var btn = $('#btnAddDetailTr');
     var params = {
+		id:$("#tbxID").val(),
 		kodeRek: $('#slsRekening').val(),
 		status: $('#slsStatus').val(),
 		tglTrans: $('#tbxTglTrans').val(),
@@ -85,7 +86,7 @@ var Table = {
 				type: "remote",
 				source: {
 					read: {
-						url: '/'+rootPage+'/transaksi/ListTransaksi', //<?=site_url()?>/controller/fungsi/parameter
+						url: '/'+rootPage+'/transaksi/ListTransaksiInput', //<?=site_url()?>/controller/fungsi/parameter
 						method: "GET",
 						map: function (r) {
 							var e = r;
