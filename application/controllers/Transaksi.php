@@ -11,8 +11,6 @@ class Transaksi extends CI_Controller {
 		$this->load->model('m_transaksi');
 
 		$data_parent = array(
-			'tgl_entry' => date('d-m-y'),
-			'created_by' => 'orang',
 			'status' => 0,
 		);
 
@@ -36,6 +34,7 @@ class Transaksi extends CI_Controller {
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];
+		// $created_by = $this->session->userdata('username');
 
 		$data_listTransaksi = array(
 			'kodeRek' => $kodeRek,
@@ -44,6 +43,8 @@ class Transaksi extends CI_Controller {
 			'keterangan' => $keterangan,
 			'nominal' => $nominal,
 			'id_transaksi' => $id_transaksi,
+			'created_by' => 'orang',
+			'tgl_entry' => date('d-m-y'),
 		);
 
 		$this->m_transaksi->tambahTransaksi($data_listTransaksi);
@@ -53,14 +54,15 @@ class Transaksi extends CI_Controller {
 
 	public function editTransaksi(){
 		$this->load->model('m_transaksi');
-		$id  = $this->uri->segment(3);
+		$id_listTransaksi  = $this->uri->segment(3);
+		$formData = json_decode($this->input->post('data'), true);
 
-		$id_transaksi = $formData['id'];
 		$kodeRek= $formData['kodeRek'];
 		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];
+		//$edited_by = $this->session->userdata('username);
 
 		$data_listTransaksi = array(
 			'kodeRek' => $kodeRek,
@@ -68,22 +70,23 @@ class Transaksi extends CI_Controller {
 			'status' => $status,
 			'keterangan' => $keterangan,
 			'nominal' => $nominal,
-			'id_transaksi' => $id_transaksi,
+			'edited_by' => 'orang',
+			'tgl_edit' => date('d-M-y'),
 		);
 
-		$this->m_transaksi->editTransaksi($data,$id);
+		$this->m_transaksi->editListTransaksi($data_listTransaksi,$id_listTransaksi);
 
 	}
 
 	public function hapusTransaksi(){
-		$id = $this->uri->segment(3);
+		$id_listTransaksi = $this->uri->segment(3);
 		$this->load->model('m_transaksi');
 
-		$this->m_transaksi->hapusTransaksi($id);
+		$this->m_transaksi->hapusTransaksi($id_listTransaksi);
 		redirect('index');
 	}
 
-	public function ListTransaksi(){
+	public function ListTransaksi(){//tabel transaksi harian yang udah di konfirmasi, masih perlu di edit
 		$this->load->model('m_transaksi');
 		$data = $this->m_transaksi->getTransaksi();
 		$data = array('data' => $data);
@@ -99,14 +102,6 @@ class Transaksi extends CI_Controller {
 		$data = array('data' => $data);
 
 		echo json_encode($data);
-	}
-
-	public function detailTransaksi(){
-		$this->load->view('v_transaksi/detailTransaksi');
-	}
-
-	public function tambahDetailTransaksi(){
-	  $this->load->view('v_transaksi/tambahDetailTransaksi');
 	}
 
 }

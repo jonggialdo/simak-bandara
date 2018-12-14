@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li class="m-menu__item  m-menu__item sidebarActive" id="transaksi" aria-haspopup="true">
-                <a href="<?php echo base_url('/transaksi') ?>" class="m-menu__link ">
+                <a href="<?php echo base_url('/transaksi/tambahTransaksi') ?>" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-cart"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
