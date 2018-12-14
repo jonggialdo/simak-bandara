@@ -13,14 +13,15 @@ class M_transaksi extends CI_Model{
     return $q->result();
   }
 
-  public function tambahTempTransaksi($data){
-    $this->db->insert('temp_transaksi', $data);
+  public function tambahParentTransaksi($data_parent){
+    $this->db->insert('transaksi', $data_parent);
   }
 
-  public function getTempTransaksi($data){
-    $this->db->order_by('id');
-    $q = $this->db->get('temp_transaksi');
-    return $q->result();
+  public function getIDTransaksi(){
+    // $user = $this->session->userdata('username');
+    $this->db->order_by('id', 'DESC');
+    // $this->db->get_where('username', $user);
+    return $this->db->get('transaksi')->row();
   }
 
   public function tambahTransaksi($data){

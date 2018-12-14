@@ -6,7 +6,6 @@
   		parent::__construct();
       $this->load->helper('form','url');
       $this->load->model('m_login');
-
   	}
 
     function index(){
@@ -17,12 +16,8 @@
       if($this->input->post('submit')){
         if($this->m_login->cek_login()){
           $this->m_login->set_login();
-          ?>
-          <script language="javascript">alert("Login Success");</script>
-          <script>document.location.href='<?php echo base_url().'index'?>';</script>
-          <?php
-        }else{?>
-         <?php
+          redirect(base_url().'login/welcome');
+        }else
          $error = array('error' => "Username atau Password Salah");
           $this->load->view('v_login', $error);
         }
@@ -31,7 +26,7 @@
 
   public function welcome(){
     $this->load->model('m_ptp');
-    $this->load->view('welcome_message');
+    $this->load->view(base_url());
   }
 
   public function logout(){

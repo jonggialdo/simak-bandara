@@ -21,17 +21,24 @@ class Transaksi extends CI_Controller {
 		$data_parent = array(
 			'tgl_entry' => date('d-m-y'),
 			'created_by' => 'orang',
-			'status' => 0;
+			'status' => 0,
 		);
 
 		$this->m_transaksi->tambahParentTransaksi($data_parent);
+		$query = $this->m_transaksi->getIDTransaksi();
+
+		// var_dump($query);die();
+
+		foreach($query as $key){
+			$id = $key->id;
+		}
+		var_dump($id);die();
+
     $this->load->view('v_transaksi/tambahTransaksi');
   }
 
   public function Create(){
 		$this->load->model('m_transaksi');
-
-		$this->load
 
 		$kd_debet = $formData['kodeDeb'];
 		$kd_kredit = $formData['kodeKre'];
