@@ -9,7 +9,7 @@
   	}
 
     function index(){
-      $this->load->view('v_login');
+      $this->load->view('login/index');
     }
 
     public function login_action(){
@@ -27,7 +27,10 @@
           'status' => 'login'
         );
         $this->session->set_userdata($data_session);
-        echo 'sukses';
+				// echo 'sukses';
+				$this->load->model('m_transaksi');
+		    $data['trx'] = $this->m_transaksi->getTransaksi();
+				$this->load->view('v_transaksi/index', $data);
         //redirect(base_url());
       }
       else {
