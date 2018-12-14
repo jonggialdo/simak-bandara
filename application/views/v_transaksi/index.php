@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<div class="col-xl-5 order-1 order-xl-2 m--align-right row">
-												<div class="modal fade" id="formTransaksi" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal fade" id="formTransaksi" role="dialog">
 													<div class="modal-dialog modal-lg" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -150,7 +150,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															</span>
 														</span>
 													</a>
-													<a id="btnFormModal" href="#" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-toggle="modal" data-target="#formTransaksi">
+													<a id="btnFormModal" href="#" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-target="#formTransaksi">
 														<span>
 															<i class="fa fa-plus"></i>
 															<span>

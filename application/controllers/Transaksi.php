@@ -53,9 +53,11 @@ class Transaksi extends CI_Controller {
 
 	public function editTransaksi(){
 		$this->load->model('m_transaksi');
+
+		$formData = json_decode($this->input->post('data'), true);
+		
 		$id  = $this->uri->segment(3);
 
-		$id_transaksi = $formData['id'];
 		$kodeRek= $formData['kodeRek'];
 		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
 		$status = $formData['status'];
