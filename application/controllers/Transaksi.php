@@ -5,15 +5,7 @@ class Transaksi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 	$this->load->helper(array('form', 'url'));
-	}
-
-	public function index(){
-		$this->load->model('m_transaksi');
-
-    $data['trx'] = $this->m_transaksi->getTransaksi();
-
-    $this->load->view('v_transaksi/index', $data);
-	}
+}
 
   public function tambahTransaksi(){
 		$this->load->model('m_transaksi');
@@ -27,7 +19,9 @@ class Transaksi extends CI_Controller {
 		$this->m_transaksi->tambahParentTransaksi($data_parent);
 
 		$data['id'] = $this->m_transaksi->getIDTransaksi();
+		$id_transaksi = $data['id']['0']['id'];
 
+		// $this->ListTransaksiInput($id_transaksi);
     $this->load->view('v_transaksi/index', $data);
   }
 
@@ -52,8 +46,8 @@ class Transaksi extends CI_Controller {
 			'id_transaksi' => $id_transaksi,
 		);
 
-		$this->ListTransaksiInput($id_transaksi);
 		$this->m_transaksi->tambahTransaksi($data_listTransaksi);
+		$formData['id'] = $id_transaksi;
 		echo json_encode($formData);
   }
 
@@ -97,10 +91,12 @@ class Transaksi extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function ListTransaksiInput($id_transaksi){
+	public function ListTransaksiInput(){
 		$this->load->model('m_transaksi');
+		$id_transaksi = $this->uri->segment(3);
 
 		$data = $this->m_transaksi->getListTransaksiInput($id_transaksi);
+
 		$data = array('data' => $data);
 
 		echo json_encode($data);

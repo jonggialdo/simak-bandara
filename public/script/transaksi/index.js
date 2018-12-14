@@ -2,7 +2,7 @@ var rootPage = window.location.pathname.split('/')[1]
 
 //== Class Initialization
 jQuery(document).ready(function () {
-	Table.Init();
+	// Table.Init($("#tbxID").val());
 	Control.Init();
 });
 
@@ -71,7 +71,10 @@ var Transaction = function(){
         data: {data: JSON.stringify(params)}
     })
     .done(function(data, textStatus, jqXHR){
-        Common.Alert.SuccessRoute("Berhasil Menambahkan Transaksi Baru", '/simak-bandara/transaksi');
+				console.log(data.id)
+        // Common.Alert.Success();
+				 // $("#divListTransaksi").mDatatable().reload();
+				Table.Init(data.id);1
 		btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		Common.Alert.Error(errorThrown);
@@ -80,13 +83,13 @@ var Transaction = function(){
 }
 
 var Table = {
-	Init: function () {
+	Init: function (id) {
 		t = $("#divListTransaksi").mDatatable({
 			data: {
 				type: "remote",
 				source: {
 					read: {
-						url: '/'+rootPage+'/transaksi/ListTransaksiInput', //<?=site_url()?>/controller/fungsi/parameter
+						url: '/'+rootPage+'/transaksi/ListTransaksiInput/'+id, //<?=site_url()?>/controller/fungsi/parameter
 						method: "GET",
 						map: function (r) {
 							var e = r;
