@@ -47,6 +47,9 @@ class M_transaksi extends CI_Model{
     $this->db->update('transaksi',$data_listTransaksi);
   }
 
+  public function hapusTransaksi($id_listTransaksi){
+    return $this->db->delete('list_transaksi', array('id_ptp'=>$id_listTransaksi));
+  }
 }
 
  ?>
