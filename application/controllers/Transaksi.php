@@ -96,7 +96,6 @@ class Transaksi extends CI_Controller {
 		$id_transaksi = $this->uri->segment(3);
 
 		$data = $this->m_transaksi->getListTransaksiInput($id_transaksi);
-
 		$data = array('data' => $data);
 
 		echo json_encode($data);

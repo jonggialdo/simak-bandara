@@ -346,11 +346,6 @@ License: You must have a valid license purchased only from themeforest(the above
 																<h5 class="modal-title">
 																	Tambah Transaksi
 																</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">
-																		&times;
-																	</span>
-																</button>
 															</div>
 															<div class="modal-body">
 																<div class="form-group m-form__group row">
@@ -367,9 +362,6 @@ License: You must have a valid license purchased only from themeforest(the above
 																	</label>
 																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
 																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
-																			<option value="" disabled selected style="display:none">Pilih Status</option>
-																			<option value="debet">Debet</option>
-																			<option value="kredit">Kredit</option>
 																		</select>
 																	</div>
 																</div>
@@ -413,7 +405,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																</div>
 															</div>
 															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-dismiss="modal">
+																<button type="button" class="btn btn-secondary" id="btnBatal" data-dismiss="modal">
 																	Batal
 																</button>
 																<button type="button" class="btn btn-success" id="btnAddDetailTr">
