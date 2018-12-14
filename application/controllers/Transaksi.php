@@ -54,7 +54,7 @@ class Transaksi extends CI_Controller {
 			'id_transaksi' => $id_transaksi,
 		);
 
-		$this->m_transaksi->tambahListTransaksi($data_listTransaksi);
+		$this->m_transaksi->tambahTransaksi($data_listTransaksi);
 		echo json_encode($formData);
   }
 

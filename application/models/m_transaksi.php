@@ -26,8 +26,8 @@ class M_transaksi extends CI_Model{
 
   }
 
-  public function tambahTransaksi($data){
-    $this->db->insert('transaksi',$data);
+  public function tambahTransaksi($data_listTransaksi){
+    $this->db->insert('list_transaksi',$data_listTransaksi);
   }
 
   public function editTransaksi($data,$id){
