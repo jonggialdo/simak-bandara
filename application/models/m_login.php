@@ -7,32 +7,33 @@ class M_login extends CI_Model{
     $this->load->database();
   }
 
-  public function cek_login(){
-    $email = $this->input->post('email');
-    $password = $this->input->post('password');
+  public function loginCheck($table, $where){
+    return $this->db->get_where($table, $where);
+    // $email = $this->input->post('email');
+    // $password = $this->input->post('password');
 
-    $this->db->where('email', $email);
-    $this->db->order_by('jabatan', 'ASC');
-    $myquery = $this->db->get('v_login');
-    $row = $myquery->row();
+    // $this->db->where('email', $email);
+    // $this->db->order_by('jabatan', 'ASC');
+    // $myquery = $this->db->get('v_login');
+    // $row = $myquery->row();
 
 
-    $where = array('email'=>$email);
+    // $where = array('email'=>$email);
 
-    if(isset($row)){
-      $hashed =$row->password;
+    // if(isset($row)){
+    //   $hashed =$row->password;
 
-      if(password_verify($password, $hashed)){
+    //   if(password_verify($password, $hashed)){
 
-        $this->db->order_by('jabatan','ASC');
-        $data = $this->db->get_where('v_login',$where);
+    //     $this->db->order_by('jabatan','ASC');
+    //     $data = $this->db->get_where('v_login',$where);
 
-        if($data->num_rows()>0)
-          return TRUE;
-        else
-          return FALSE;
-        }
-      }
+    //     if($data->num_rows()>0)
+    //       return TRUE;
+    //     else
+    //       return FALSE;
+    //   }
+    // }
   }
 
   public function set_login(){
