@@ -354,7 +354,91 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 											<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-												<a href="<?php echo base_url('/transaksi/tambahDetailTransaksi') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+												<div class="modal fade" id="formDetail" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">
+																	Tambah Debet / Kredit
+																</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">
+																		&times;
+																	</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Kode Rekening <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2" id="slsRekening" style="width:560px; text-align:center" required></select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Status <span style="color:red">*</span> :
+																	</label>
+																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
+																			<option value="" disabled selected style="display:none">Pilih Status</option>
+																			<option value="1">Debet</option>
+																			<option value="2">Kredit</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Tanggal Transaksi<span style= "color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																			<input type="text" class="form-control m-input datepicker" placeholder="Tanggal Transaksi" name="tbxTglTrans" id="tbxTglTrans" required />
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-calendar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Nominal<span style= "color:red" ;>*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12 m-input-icon m-input-icon--right" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																		<input type="text" class="form-control m-input" placeholder="Nominal (Rp)" name="tbxNominal" id="tbxNominal" required/>
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-dollar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Keterangan <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<textarea class="form-control" placeholder="Keterangan" name="tbxKeterangan" id="tbxKeterangan" required></textarea>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">
+																	Batal
+																</button>
+																<button type="button" class="btn btn-success" id="btnAddDetailTr">
+																	Tambah
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<a id="btnFormModal" href="#" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-toggle="modal" data-target="#formDetail">
 													<span>
 														<i class="fa fa-plus"></i>
 														<span>

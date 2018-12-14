@@ -71,6 +71,19 @@
 					if (isConfirm)
 						window.location.href = url;
 				})
+		},
+		PromptRedirect: function(message, url) {
+            swal({
+                title: 'Anda yakin untuk pindah halaman?',
+                text: message,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            })
+				.then(function(isConfirm) {
+					if (isConfirm) 
+						window.location.href = url;
+				});
 		}
 	},
 	Format: {
@@ -95,19 +108,11 @@
 }
 
 jQuery(document).ready(function () {
-    var path = window.location.pathname;
-    path2 = path.split('/')[1];
-
-
+	//turn active in sidebar
+	var path = window.location.pathname;
+    path2 = path.split('/')[2];
     $('.sidebarActive').each(function () {
-        if (path2 == 'PinnedProject') {
-            if (this.id == path)
-                $(this).addClass('m-menu__item--active').siblings().removeClass("m-menu__item--active");
-
-        }
-        else if (this.id == path2)
+        if (this.id == path2)
             $(this).addClass('m-menu__item--active').siblings().removeClass("m-menu__item--active");
-
     })
-    //
 });

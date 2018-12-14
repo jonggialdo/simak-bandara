@@ -349,7 +349,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <button type="button" class="close" data-close="alert" aria-label="Close"></button>
                                             </div>
                                         </div>
-                                    </div>
+									</div>
 									<div class="m-portlet__body tab-content">
 										<div class="m-portlet__body tab-pane active" id="form_debet">
 											<div class="form-group m-form__group row">
@@ -357,7 +357,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													<label>
 														Nama Kode Rekening:
 													</label>
-													<input type="text" class="form-control m-input">
+													<select class="form-control m-select2" id="slsRekening"></select>
 												</div>
 												<div class="col-lg-6">
 													<label>
@@ -519,7 +519,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Page Snippets -->
 
         <script src="<?php echo base_url()?>public/script/Common.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>public/script/transaksi/create.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>public/script/transaksi/createDetail.js" type="text/javascript"></script>
 
         
 </body>
