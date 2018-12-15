@@ -55,10 +55,6 @@ class M_transaksi extends CI_Model{
   public function hapusTransaksi($id_listTransaksi){
     return $this->db->delete('list_transaksi', array('id'=>$id_listTransaksi));
   }
-  public function getEditTransaksi($id_listTransaksi){
-    $this->db->where('id', $id_listTransaksi);
-    return $this->db->get('list_transaksi')->row_array();
-  }
 }
 
  ?>
