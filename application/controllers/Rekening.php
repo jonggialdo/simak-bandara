@@ -95,7 +95,8 @@ class Rekening extends CI_Controller {
 
 	public function ListRekening(){
 		$this->load->model('mstRekening');
-		$data = $this->mstRekening->GetRekening();
+		$where = array('status' => $this->uri->segment(3));
+		$data = $this->mstRekening->GetRekening($where);
 		$data = array('data' => $data);
 
 		echo json_encode($data);
