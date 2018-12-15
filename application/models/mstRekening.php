@@ -20,8 +20,13 @@ class mstRekening extends CI_Model{
         return $result;
     }
 
-    public function GetRekening(){
-        $result = $this->db->get('kode_rekening');
+    public function GetRekening($where){
+        if($where['status'] == 'debet' || $where['status'] == 'kredit') {
+            $result = $this->db->get_where('kode_rekening', $where);
+        }
+        else {
+            $result = $this->db->get('kode_rekening');
+        }
 
         return $result->result();
     }
