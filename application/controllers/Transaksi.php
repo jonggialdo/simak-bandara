@@ -48,9 +48,24 @@ class Transaksi extends CI_Controller {
 		);
 
 		$this->m_transaksi->tambahTransaksi($data_listTransaksi);
+
 		$formData['id'] = $id_transaksi;
 		echo json_encode($formData);
   }
+
+	public function konfirmasiTransaksi(){
+		$this->load->model('m_transaksi');
+
+		$formData = json_decode($this->input->post('data'), true);
+		$id_transaksi = $formData['id'];
+
+		$data_parentTransaksi = array(
+			'status' => 'confirmed',
+		);
+
+		$this->m_transaksi->editParentTransaksi($data_parentTransaksi, $id_transaksi);
+		redirect(base_url());
+	}
 
 	public function getEditTransaksi(){
 		$this->load->model('m_transaksi');
