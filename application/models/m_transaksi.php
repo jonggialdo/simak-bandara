@@ -37,6 +37,11 @@ class M_transaksi extends CI_Model{
     $this->db->insert('list_transaksi',$data_listTransaksi);
   }
 
+  public function getEditTransaksi($id_listTransaksi){
+    $this->db->where('id', $id_listTransaksi);
+    return $this->db->get('list_transaksi')->row_array();
+  }
+
   public function editParentTransaksi($data_parentTransaksi,$id_transaksi){
     $this->db->where('id',$id_transaksi);
     $this->db->update('transaksi',$data_parentTransaksi);

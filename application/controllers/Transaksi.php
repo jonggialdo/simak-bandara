@@ -52,6 +52,14 @@ class Transaksi extends CI_Controller {
 		echo json_encode($formData);
   }
 
+	public function getEditTransaksi(){
+		$this->load->model('m_transaksi');
+		$id_listTransaksi  = $this->uri->segment(3);
+
+		$query = $this->m_transaksi->getEditTransaksi($id_listTransaksi);
+		echo json_encode($query);
+	}
+
 	public function editTransaksi(){
 		$this->load->model('m_transaksi');
 		$id_listTransaksi  = $this->uri->segment(3);
