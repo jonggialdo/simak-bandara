@@ -128,12 +128,15 @@ License: You must have a valid license purchased only from themeforest(the above
 															</div>
 														</div>
 													</div>
-													<div class="btn-group m-btn-group--pill btn-group col-xl-2 order-2 order-xl-1" style="margin-top: 13px;">
+													<div class="btn-group m-btn-group--pill col-xl-2 order-2 order-xl-1" style="margin-top: 13px;">
 														<a href="#" class="m-btn btn btn-primary" id="searchNeraca">
 															<i class="fa fa-search"></i>
 														</a>
 														<a href="#" class="m-btn btn btn-danger" id="resetNeraca">
 															<i class="fa fa-refresh"></i>
+														</a>
+														<a href="#" class="m-btn btn btn-success" id="downloadNeraca">
+															<i class="fa fa-download"></i>
 														</a>
 													</div>
 												</div>
@@ -210,6 +213,9 @@ License: You must have a valid license purchased only from themeforest(the above
 														<a href="#" class="m-btn btn btn-danger" id="resetPosisi">
 															<i class="fa fa-refresh"></i>
 														</a>
+														<a href="#" class="m-btn btn btn-success" id="downloadPosisi">
+															<i class="fa fa-download"></i>
+														</a>
 													</div>
 												</div>
 											</div>
@@ -284,6 +290,9 @@ License: You must have a valid license purchased only from themeforest(the above
 														</a>
 														<a href="#" class="m-btn btn btn-danger" id="resetRL">
 															<i class="fa fa-refresh"></i>
+														</a>
+														<a href="#" class="m-btn btn btn-success" id="downloadRL">
+															<i class="fa fa-download"></i>
 														</a>
 													</div>
 												</div>
