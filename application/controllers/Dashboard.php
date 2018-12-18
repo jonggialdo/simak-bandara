@@ -40,11 +40,12 @@ class Dashboard extends CI_Controller {
 
 	public function GetNeraca() {
 		$this->load->model('vwNeraca');
+		$like = $this->input->post('keyword');
 		$where = array(
 			'MONTH(TanggalTransaksi)' => $this->input->post('month'),
 			'YEAR(TanggalTransaksi)' => $this->input->post('year')
 		);
-		$data = $this->vwNeraca->GetListNeraca($where);
+		$data = $this->vwNeraca->GetListNeraca($where, $like);
 		$data = array('data' => $data);
 
 		echo json_encode($data);
@@ -53,11 +54,12 @@ class Dashboard extends CI_Controller {
 	public function GetRugiLaba() {
 		$this->load->model('vwRugiLaba');
 		$this->load->model('vwRugiLaba');
+		$like = $this->input->post('keyword');
 		$where = array(
 			'MONTH(TanggalTransaksi)' => $this->input->post('month'),
 			'YEAR(TanggalTransaksi)' => $this->input->post('year')
 		);
-		$data = $this->vwRugiLaba->GetListRugiLaba($where);
+		$data = $this->vwRugiLaba->GetListRugiLaba($where, $like);
 		$data = array('data' => $data);
 
 		echo json_encode($data);
