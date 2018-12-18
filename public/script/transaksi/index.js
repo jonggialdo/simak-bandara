@@ -25,7 +25,7 @@ var Control = {
 			$("#divRekening").hide();
 			$("#formTransaksi").modal({ backdrop: "static" });
 		});
-		
+
 		$("#btnBatal").on("click", function(){
 			Control.Select2();
 			$("#slsRekening").val("");
@@ -91,7 +91,7 @@ var Transaction = {
 		}
 		console.log(params);
 		btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
-				
+
 		$.ajax({
 				url: '/'+rootPage+'/Transaksi/Create',
 				type: 'POST',

@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="m-portlet__head-caption">
 										<div class="m-portlet__head-title">
 											<h3 class="m-portlet__head-text">
-												List Rekening
+												Buku Besar
 											</h3>
 										</div>
 									</div>
@@ -50,21 +50,6 @@ License: You must have a valid license purchased only from themeforest(the above
 										<div class="row align-items-center">
 											<div class="col-xl-8 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
-													<!-- <div class="col-md-5">
-														<div class="m-form__group m-form__group--inline">
-															<div class="m-form__label">
-																<label class="m-label m-label--single">
-																	<span>
-																		Kode Awal
-																	</span>
-																</label>
-															</div>
-															<div class="m-form__control">
-																<select class="form-control m-bootstrap-select" id="slsDigitAwalRek"></select>
-															</div>
-														</div>
-														<div class="d-md-none m--margin-bottom-10"></div>
-													</div> -->
 													<div class="col-md-5">
 														<div class="m-input-icon m-input-icon--left">
 															<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchRekening">
@@ -77,22 +62,19 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-												<a href="<?php echo base_url('/Rekening/tambahRekening') ?>" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-													<span>
-														<i class="fa fa-plus"></i>
-														<span>
-															Tambah Rekening
-														</span>
-													</span>
-												</a>
-												<div class="m-separator m-separator--dashed d-xl-none"></div>
-											</div>
+										</div>
+									</div>
+									<div class="m-content" style="padding-top:10px" id="bukuBesar">
+										<div class="alert alert-warning m-alert--default m--align-center" role="alert" style="padding:20px;">
+											<strong>
+												Silakan
+											</strong>
+												cari transaksi sesuai nomor rekening yang diinginkan.
 										</div>
 									</div>
 									<!--end: Search Form -->
 									<!--begin: Datatable -->
-									<div class="m_datatable" id="divRekeningList"></div>
+									<div class="m_datatable" id="divTransaksiList"></div>
 									<!--end: Datatable -->
 								</div>
 							</div>

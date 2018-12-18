@@ -81,7 +81,7 @@ class Transaksi extends CI_Controller {
 		$formData = json_decode($this->input->post('data'), true);
 
 		$kodeRek= $formData['kodeRek'];
-		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
+		$tgl_transaksi =  $formdata['tgl_transaksi'];
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];

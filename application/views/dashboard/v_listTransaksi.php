@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="m-portlet__head-caption">
 										<div class="m-portlet__head-title">
 											<h3 class="m-portlet__head-text">
-												Dashboard
+												List Transaksi
 											</h3>
 										</div>
 									</div>
@@ -108,7 +108,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															</div>
 														</div>
 													</div>
-													<div class="btn-group m-btn-group--pill col-xl-2 order-2 order-xl-1" style="margin-top: 13px;">
+													<div class="btn-group col-xl-2 order-2 order-xl-1" style="margin-top: 13px;">
 														<a href="#" class="m-btn btn btn-primary" id="searchTrx">
 															<i class="fa fa-search"></i>
 														</a>
