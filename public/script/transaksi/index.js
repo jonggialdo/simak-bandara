@@ -11,6 +11,7 @@ var Control = {
 		Control.BootstrapDatepicker();
 		Control.Modal();
 		Control.Select2();
+		Control.Window();
 	},
 	BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
@@ -116,6 +117,11 @@ var Control = {
 		Common.Alert.Error(errorThrown);
 		btnConf.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
 		})
+	},
+	Window: function(){
+		window.onload = function(){
+			Common.Alert.PromptRedirect("Apakah anda ingin meninggalkan halaman ini?", '/simak-bandara/Transaksi/tambahTransaksi');
+		}
 	}
 }
 
