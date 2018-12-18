@@ -36,22 +36,13 @@ var Control = {
 		});
 
 		$("#btnAddDetailTr").on("click", function(){
-			Transaction.Create();
+			var link = "Create";
+			Transaction.Create(link);
 		})
 	},
-	Select2: function(kodeRek=0, status=""){
+	Select2: function(){
 		$("#slsStatus").html("<option></option>");
-		if(status != ""){
-			if(status == "debet"){
-				$("#slsStatus").append('<option value="debet" selected>Debet</option><option value="kredit">Kredit</option>');
-			}
-			else{
-				$("#slsStatus").append('<option value="debet">Debet</option><option value="kredit" selected>Kredit</option>');
-			}
-		}
-		else{
-			$("#slsStatus").append('<option value="debet">Debet</option><option value="kredit">Kredit</option>');
-		}
+		$("#slsStatus").append('<option value="debet">Debet</option><option value="kredit">Kredit</option>');
 		$("#slsStatus").select2({placeholder: "Pilih Tipe Rekening", minimumResultsForSearch: Infinity});
 		$("#slsStatus").on("change", function(){
 			$("#divRekening").show();
@@ -62,18 +53,68 @@ var Control = {
 			}).done(function (data, textStatus, jqXHR) {
 				$("#slsRekening").html("<option></option>");
 				$.each(data.data, function (i, item) {
-					if(kodeRek!=0){
-						if(kodeRek == item.kode_rekening){
-							$("#slsRekening").append("<option value='" + item.kode_rekening  + "selected'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
-						}
-					}
-					else
-						$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+					$("#slsRekening").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
 				})
 				$("#slsRekening").select2({ placeholder: "Pilih Kode Rekening" });
 			}).fail(function (jqXHR, textStatus, errorThrown) {
 				Common.Alert.Error(errorThrown);
 			})
+		})
+	},
+	Select2Edit: function(status="", kodeRek=0){
+		$("#slsStatusEdit").html("<option></option>");
+		if(status != ""){
+			console.log(status);
+			if(status == "debet"){
+				$("#slsStatusEdit").append('<option value="debet" selected>Debet</option><option value="kredit">Kredit</option>');
+			}
+			else if(status == "kredit"){
+				$("#slsStatusEdit").append('<option value="kredit" selected>Kredit</option><option value="debet">Debet</option>');
+			}
+		}
+		else{
+			$("#slsStatusEdit").append('<option value="debet">Debet</option><option value="kredit">Kredit</option>');
+		}
+		$("#slsStatusEdit").select2({placeholder: "Pilih Tipe Rekening", minimumResultsForSearch: Infinity});
+		$.ajax({
+			url: '/'+rootPage+'/Rekening/ListRekening',
+			type: "GET",
+			dataType: 'json',
+		}).done(function (data, textStatus, jqXHR) {
+			$("#slsRekeningEdit").html("<option></option>");
+			console.log(kodeRek);
+			$.each(data.data, function (i, item) {
+				if(kodeRek!=0){
+					if(kodeRek == item.kode_rekening){
+						$("#slsRekeningEdit").append("<option value='" + item.kode_rekening  + "selected'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+					}
+				}
+				else
+					$("#slsRekeningEdit").append("<option value='" + item.kode_rekening  + "'>" + item.kode_rekening +"-"+ item.nama_kode + "</option>");
+			})
+			$("#slsRekeningEdit").select2({ placeholder: "Pilih Kode Rekening" });
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			Common.Alert.Error(errorThrown);
+		})
+	},
+	ButtonConfirm: function(){
+		var btnConf = $("#btnConfirm");
+		var params ={
+			id: $("#tbxID").val(),
+		}
+		console.log(params);
+		btnConf.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
+		$.ajax({
+			url: '/'+rootPage+'/Transaksi/konfirmasiTransaksi',
+			type: 'POST',
+			dataType: 'json',
+			data: {data: JSON.stringify(params)}
+	}).done(function(data, textStatus, jqXHR){
+		Common.Alert.PromptRedirect("Berhasil Konfirmasi Transaksi", '/simak-bandara/dashboard/Transaksi');
+		btnConf.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		Common.Alert.Error(errorThrown);
+		btnConf.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
 		})
 	}
 }
@@ -85,7 +126,7 @@ var Transaction = {
 			id: $("#tbxID").val(),
 			kodeRek: $('#slsRekening').val(),
 			status: $('#slsStatus').val(),
-			tglTrans: $('#tbxTglTrans').val(),
+			tgl_transaksi: $('#tbxTglTrans').val(),
 			nominal: $('#tbxNominal').val(),
 			keterangan: $('#tbxKeterangan').val(),
 		}
@@ -98,15 +139,55 @@ var Transaction = {
 				dataType: 'json',
 				data: {data: JSON.stringify(params)}
 		}).done(function(data, textStatus, jqXHR){
-						$("#divListTransaksi").mDatatable('reload');
-						Control.Select2();
-						$("#slsRekening").val("");
-						$("#slsStatus").val("");
-						$('#tbxTglTrans').val("");
-						$('#tbxNominal').val("");
-						$('#tbxKeterangan').val("");
-						$("#formTransaksi").modal("toggle");
-						Table.Init(data.id);
+				$("#divListTransaksi").mDatatable('reload');
+				Control.Select2();
+				$("#slsRekening").val("");
+				$("#slsStatus").val("");
+				$('#tbxTglTrans').val("");
+				$('#tbxNominal').val("");
+				$('#tbxKeterangan').val("");
+				$("#formTransaksi").modal("toggle");
+				Table.Init(data.id);
+				$("#btnConfirm").on("click", function(){
+					Control.ButtonConfirm();
+				})
+			btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			Common.Alert.Error(errorThrown);
+			btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+			})
+	},
+	Edit: function(id){
+		var btn = $('#btnEditDetailTr');
+		var params = {
+			id: $("#tbxID").val(),
+			kodeRek: $('#slsRekeningEdit').val(),
+			status: $('#slsStatusEdit').val(),
+			tgl_transaksi: $('#tbxTglTransEdit').val(),
+			nominal: $('#tbxNominalEdit').val(),
+			keterangan: $('#tbxKeteranganEdit').val(),
+		}
+		console.log(params);
+		btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
+				
+		$.ajax({
+				url: '/'+rootPage+'/Transaksi/editTransaksi/'+id,
+				type: 'POST',
+				dataType: 'json',
+				data: {data: JSON.stringify(params)}
+		}).done(function(data, textStatus, jqXHR){
+				$("#divListTransaksi").mDatatable('reload');
+				Control.Select2();
+				$("#slsRekening").val("");
+				$("#slsStatus").val("");
+				$('#tbxTglTrans').val("");
+				$('#tbxNominal').val("");
+				$('#tbxKeterangan').val("");
+				$("#formTransaksi").modal("toggle");
+				Table.Init(data.id);
+				$("#btnConfirm").on("click", function(){
+					Control.ButtonConfirm();
+				})
 			btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
 		}).fail(function (jqXHR, textStatus, errorThrown) {
 			Common.Alert.Error(errorThrown);
@@ -124,19 +205,22 @@ var Transaction = {
 			Common.Alert.Error(errorThrown);
 		})
 	},
-	Edit: function(id){
+	ModalEdit: function(id){
 		$.ajax({
 				url: '/'+rootPage+'/Transaksi/getEditTransaksi/'+id,
 				type: 'GET',
+				dataType: 'json',
 		}).done(function(data, textStatus, jqXHR){
-			Control.Select2(data.kodeRek, data.status);
-			$('#tbxTglTrans').val(data.tgl_transaksi);
-			$('#tbxNominal').val(data.nominal);
-			$('#tbxKeterangan').val(data.keterangan);
-			$("#formTransaksi").modal({ backdrop: "static" });
+			Control.Select2Edit(data.status, data.kodeRek);
+			$('#tbxTglTransEdit').val(data.tgl_transaksi);
+			$('#tbxNominalEdit').val(data.nominal);
+			$('#tbxKeteranganEdit').val(data.keterangan);
+			$("#formTransaksiEdit").modal({ backdrop: "static" });
+			$("#btnEditDetailTr").on("click", function(){
+				Transaction.Edit(data.id);
+			})
 		}).fail(function (jqXHR, textStatus, errorThrown) {
 			Common.Alert.Error(errorThrown);
-			btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
 			})
 	},
 }
@@ -184,7 +268,7 @@ var Table = {
 			columns: [
 				{
 					field: "id", title: "Actions", sortable: false, textAlign: "center", template: function (t) {
-						var strBuilder = '<button onclick="Transaction.Edit('+ t.id +')" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></button>\t\t\t\t\t\t';
+						var strBuilder = '<button onclick="Transaction.ModalEdit('+ t.id +')" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></button>\t\t\t\t\t\t';
 						strBuilder += '<button onclick="Transaction.Delete('+ t.id +')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Hapus Rekening"><i class="la la-trash"></i></button>';
 						return strBuilder;
 					}

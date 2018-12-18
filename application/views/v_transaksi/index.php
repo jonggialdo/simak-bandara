@@ -79,7 +79,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																		Debet / Kredit <span style="color:red">*</span> :
 																	</label>
 																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
-																		<select class="form-control m-select2" id="slsStatus" style="width:560px" required>
+																		<select class="form-control m-select2 slsStatus" id="slsStatus" style="width:560px" required>
 																		</select>
 																	</div>
 																</div>
@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																		Kode Rekening <span style="color:red">*</span> :
 																	</label>
 																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
-																		<select class="form-control m-select2" id="slsRekening" style="width:560px; text-align:center" required></select>
+																		<select class="form-control m-select2 slsRekening" id="slsRekening" style="width:560px; text-align:center" required></select>
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
@@ -136,6 +136,82 @@ License: You must have a valid license purchased only from themeforest(the above
 																</button>
 																<button type="button" class="btn btn-success" id="btnAddDetailTr">
 																	Tambah
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="modal hide fade" id="formTransaksiEdit" role="dialog">
+													<div class="modal-dialog modal-lg" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">
+																	Edit Transaksi
+																</h5>
+															</div>
+															<div class="modal-body">
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Debet / Kredit <span style="color:red">*</span> :
+																	</label>
+																	<div class="m-form__control col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2 slsStatus" id="slsStatusEdit" style="width:560px" required>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row" id="divRekeningEdit">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Kode Rekening <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-8 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:10px">
+																		<select class="form-control m-select2 slsRekening" id="slsRekeningEdit" style="width:560px; text-align:center" required></select>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Tanggal Transaksi<span style= "color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																			<input type="text" class="form-control m-input datepicker" placeholder="Tanggal Transaksi" name="tbxTglTrans" id="tbxTglTransEdit" required />
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-calendar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Nominal<span style= "color:red" ;>*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12 m-input-icon m-input-icon--right" style= "padding-left:0px; padding-right:25px">
+																		<div class="input-group date">
+																		<input type="text" class="form-control m-input" placeholder="Nominal (Rp)" name="tbxNominal" id="tbxNominalEdit" required/>
+																			<div class="input-group-append">
+																				<span class="input-group-text">
+																					<i class="la la-dollar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<label class="col-form-label col-lg-3 col-sm-12">
+																		Keterangan <span style="color:red">*</span> :
+																	</label>
+																	<div class="col-lg-9 col-md-9 col-sm-12" style= "padding-left:0px; padding-right:25px">
+																		<textarea class="form-control" placeholder="Keterangan" name="tbxKeterangan" id="tbxKeteranganEdit" required></textarea>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" id="btnBatal" data-dismiss="modal">
+																	Batal
+																</button>
+																<button type="button" class="btn btn-success" id="btnEditDetailTr">
+																	Edit
 																</button>
 															</div>
 														</div>
