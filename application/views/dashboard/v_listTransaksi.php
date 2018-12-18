@@ -47,98 +47,83 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="m-portlet__body">
 									<!--begin: Search Form -->
 									<div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-										<div class="row align-items-center">
-											<div class="col-xl-3 order-2 order-xl-1">
-												<div class="form-group m-form__group row align-items-center">
-													<div class="col-md-12">
-														<div class="m-form__group m-form__group">
-															<div class="m-form__label">
-																<label class="m-label m-label--single">
-																	<span>
-																		Digit Awal:
+									<div class="row align-items-center">
+													<div class="col-xl-3 order-2 order-xl-1" style="margin-top: 13px;">
+														<div class="form-group m-form__group row align-items-center">
+															<div class="col-md-12">
+																<div class="m-input-icon m-input-icon--left">
+																	<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchRekeningAll">
+																	<span class="m-input-icon__icon m-input-icon__icon--left">
+																		<span>
+																			<i class="la la-search"></i>
+																		</span>
 																	</span>
-																</label>
-															</div>
-															<div class="m-form__control">
-																<select class="form-control m-bootstrap-select" id="slsDashboard">
-																	<option value="1">1   (satu)</option>
-																	<option value="2">2   (dua)</option>
-																	<option value="3">3   (tiga)</option>
-																	<option value="4">4</option>
-																	<option value="5">5</option>
-																</select>
-															</div>
-														</div>
-														<div class="d-md-none m--margin-bottom-10"></div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-4 order-2 order-xl-1" style="margin-top: 13px;">
-												<div class="form-group m-form__group row align-items-center">
-													<div class="col-md-12">
-														<div class="m-input-icon m-input-icon--left">
-															<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchRekening">
-															<span class="m-input-icon__icon m-input-icon__icon--left">
-																<span>
-																	<i class="la la-search"></i>
-																</span>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-2 order-2 order-xl-1">
-												<div class="form-group m-form__group row align-items-center">
-													<div class="col-md-12">
-														<div class="m-form__group m-form__group">
-															<div class="m-form__label">
-																<label class="m-label m-label--single">
-																	<span>
-																		Awal:
-																	</span>
-																</label>
-															</div>
-															<div class="m-form__control">
-																<div class="input-group date">
-																	<input type="text" class="form-control m-input datepicker" name="tbxBeginDate" id="tbxBeginDate" />
 																</div>
 															</div>
 														</div>
-														<div class="d-md-none m--margin-bottom-10"></div>
 													</div>
-												</div>
-											</div>
-											<div class="col-xl-2 order-2 order-xl-1">
-												<div class="form-group m-form__group row align-items-center">
-													<div class="col-md-12">
-														<div class="m-form__group m-form__group">
-															<div class="m-form__label">
-																<label class="m-label m-label--single">
-																	<span>
-																		Akhir:
-																	</span>
-																</label>
-															</div>
-															<div class="m-form__control">
-															<div class="input-group date">
-																	<input type="text" class="form-control m-input datepicker" name="tbxEndDate" id="tbxEndDate" />
+													<div class="col-xl-3 order-2 order-xl-1" style="margin-top: 13px;">
+														<div class="form-group m-form__group row align-items-center">
+														</div>
+													</div>
+													<div class="col-xl-2 order-2 order-xl-1">
+														<div class="form-group m-form__group row align-items-center">
+															<div class="col-md-12">
+																<div class="m-form__group m-form__group">
+																	<div class="m-form__label">
+																		<label class="m-label m-label--single">
+																			<span>
+																				Awal:
+																			</span>
+																		</label>
+																	</div>
+																	<div class="m-form__control">
+																		<div class="input-group date">
+																			<input type="text" class="form-control m-input datepicker" name="tbxBeginDate" id="tbxBeginDate" />
+																		</div>
+																	</div>
 																</div>
+																<div class="d-md-none m--margin-bottom-10"></div>
 															</div>
 														</div>
-														<div class="d-md-none m--margin-bottom-10"></div>
+													</div>
+													<div class="col-xl-2 order-2 order-xl-1">
+														<div class="form-group m-form__group row align-items-center">
+															<div class="col-md-12">
+																<div class="m-form__group m-form__group">
+																	<div class="m-form__label">
+																		<label class="m-label m-label--single">
+																			<span>
+																				Akhir:
+																			</span>
+																		</label>
+																	</div>
+																	<div class="m-form__control">
+																		<div class="input-group date">
+																			<input type="text" class="form-control m-input datepicker" name="tbxEndDate" id="tbxEndDate" />
+																		</div>
+																	</div>
+																</div>
+																<div class="d-md-none m--margin-bottom-10"></div>
+															</div>
+														</div>
+													</div>
+													<div class="btn-group m-btn-group--pill col-xl-2 order-2 order-xl-1" style="margin-top: 13px;">
+														<a href="#" class="m-btn btn btn-primary" id="searchTrx">
+															<i class="fa fa-search"></i>
+														</a>
+														<a href="#" class="m-btn btn btn-danger" id="resetTrx">
+															<i class="fa fa-refresh"></i>
+														</a>
+														<a href="#" class="m-btn btn btn-success" id="downloadTrx">
+															<i class="fa fa-download"></i>
+														</a>
 													</div>
 												</div>
-											</div>
-											<div class="col-xl-1 order-2 order-xl-1" style="padding-left: 0px; margin-top: 13px;">
-												<a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-													<i class="fa fa-search"></i>
-												</a>
-											</div>
-										</div>
 									</div>
 									<!--end: Search Form -->
 									<!--begin: Datatable -->
-									<div class="m_datatable" id="divDashboard"></div>
+									<div class="m_datatable" id="divTrx"></div>
 									<!--end: Datatable -->
 								</div>
 							</div>
@@ -148,6 +133,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 	</div>
-	<script src="<?php echo base_url()?>public/script/dashboard/index.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>public/script/dashboard/transaksi.js" type="text/javascript"></script>
 </body>
 </html>

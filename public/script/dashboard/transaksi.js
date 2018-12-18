@@ -2,25 +2,16 @@ var rootPage = window.location.pathname.split('/')[1]
 
 //== Class Initialization
 jQuery(document).ready(function () {
-    Table.Init();
-    Control.Init();
+	Control.Init();
+	DataTable.GetData();
 });
 
 var Table = {
-	Init: function (sls) {
-		t = $("#divDashboard").mDatatable({
+	Init: function (data) {
+		t = $("#divTrx").mDatatable({
 			data: {
-				type: "remote",
-				source: {
-					read: {
-						url: '/'+rootPage+'/Dashboard/ListRekening/'+sls, //<?=site_url()?>/controller/fungsi/parameter
-						method: "GET",
-						map: function (r) {
-							var e = r;
-							return void 0 !== r.data && (e = r.data), e;
-						}
-					}
-				},
+				type: "local",
+				source: data,
 				pageSize: 10,
 				saveState: {
 					cookie: true,
@@ -61,14 +52,7 @@ var Table = {
 
 var Control = {
     Init: function(){
-        Control.Select2();
         Control.BootstrapDatepicker();
-    },
-    Select2: function(){
-        $("#slsDashboard").select2({
-            placeholder: "Pilih Dashboard",
-            minimumResultsForSearch: Infinity
-        })
     },
     BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
@@ -78,4 +62,45 @@ var Control = {
 			}
 		})
 	},
+	Button: function(){
+		$("#searchTrx").on('click', function(){
+			Control.SearchTrx()
+		})
+		$("#resetTrx").on('click', function(){
+			DataTable.GetData();
+		})
+	},
+	Input: function(){
+        // $("#tbxSearchRekeningAll").keyup(function(event){
+        //     if(event.keyCode == 13){
+        //         Control.SearchTrx();
+        //     }
+		// })
+	},
+	SearchTrx: function(){
+		keyword = $("#tbxSearchRekeningAll").val()
+		start = $("#tbxBeginDate").val()
+		end = $("#tbxEndDate").val();
+		DataTable.GetData(keyword, start, end)
+    },
+}
+
+var DataTable = {
+	GetData: function(key="", sDate="", eDate=""){
+		params = {
+			keyword: key,
+			startDate: sDate,
+			endDate: eDate
+		}
+		$.ajax({
+			url: '/'+rootPage+'/Rekening/ListRekening',
+			type: 'GET',
+			dataType: 'json',
+			data: {data : JSON.stringify(params)}
+		}).done(function(data, textStatus, jqXHR){
+			Table.Init(data);
+		}).fail(function(jqHXR, textStatus, errorThrown){
+
+		})
+	}
 }
