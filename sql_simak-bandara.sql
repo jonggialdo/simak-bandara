@@ -55,7 +55,7 @@ INSERT INTO `kode_rekening` (`id`, `kode_rekening`, `nama_kode`, `status`, `crea
 CREATE TABLE `list_transaksi` (
   `id` int(11) NOT NULL,
   `kodeRek` int(11) NOT NULL,
-  `tgl_transaksi` text NOT NULL,
+  `tgl_transaksi` datetime NOT NULL,
   `status` enum('debet','kredit','','') NOT NULL,
   `id_transaksi` int(11) NOT NULL,
   `keterangan` text NOT NULL,

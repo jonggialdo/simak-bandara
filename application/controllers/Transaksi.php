@@ -30,7 +30,7 @@ class Transaksi extends CI_Controller {
 
 		$id_transaksi = $formData['id'];
 		$kodeRek= $formData['kodeRek'];
-		$tgl_transaksi =  date('d-M-y');//tgl_transaksi
+		$tgl_transaksi =  $formData['tgl_transaksi'];//tgl_transaksi
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];
@@ -64,7 +64,8 @@ class Transaksi extends CI_Controller {
 		);
 
 		$this->m_transaksi->editParentTransaksi($data_parentTransaksi, $id_transaksi);
-		redirect(base_url());
+		$formData['id'] = $id_transaksi;
+		echo json_encode($formData);
 	}
 
 	public function getEditTransaksi(){
@@ -81,7 +82,7 @@ class Transaksi extends CI_Controller {
 		$formData = json_decode($this->input->post('data'), true);
 
 		$kodeRek= $formData['kodeRek'];
-		$tgl_transaksi =  $formdata['tgl_transaksi'];
+		$tgl_transaksi =  $formData['tgl_transaksi'];//tgl_transaksi
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];
