@@ -1,12 +1,16 @@
 //Global Variable	
 var rootPage = window.location.pathname.split('/')[1]
-var keyword = ""
-var start = ""
-var end = ""
+var month = new Date().getMonth();
+var year = new Date().getFullYear();
+
+var keyword = ''
+var monthData = ''
+var yearData = ''
 
 //== Class Initialization
 jQuery(document).ready(function () {
-    DataTable.Init();
+	Data.GetTableData("","",1)
+	Button.Init();
     Control.Init();
 });
 
@@ -29,7 +33,6 @@ var Table = {
 				scroll: false,
 				footer: false
 			},
-			sortable: true,
 			pagination: true,
 			toolbar: {
 				items: {
@@ -42,15 +45,12 @@ var Table = {
 			// 	input: $("#tbxSearchNeraca")
 			// },
 			columns: [
-				{
-					field: "id", title: "Actions", sortable: false, textAlign: "center", template: function (t) {
-						var strBuilder = '<a href="/'+rootPage+'/Rekening/editRekening/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></a>\t\t\t\t\t\t';
-						strBuilder += '<a href="/'+rootPage+'/Rekening/Delete/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Hapus Rekening"><i class="la la-trash"></i></a>';
-						return strBuilder;
-					}
-				},
 				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan", textAlign: "center" },
+				{ field: "nama_kode", title: "Keterangan",  sortable:false, textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
 				{ field: "status", title: "Status", textAlign: "center" },
 			]
         });
@@ -73,7 +73,6 @@ var Table = {
 				scroll: false,
 				footer: false
 			},
-			sortable: true,
 			pagination: true,
 			toolbar: {
 				items: {
@@ -86,15 +85,12 @@ var Table = {
 			// 	input: $("#tbxSearchPosisi")
 			// },
 			columns: [
-				{
-					field: "id", title: "Actions", sortable: false, textAlign: "center", template: function (t) {
-						var strBuilder = '<a href="/'+rootPage+'/Rekening/editRekening/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></a>\t\t\t\t\t\t';
-						strBuilder += '<a href="/'+rootPage+'/Rekening/Delete/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Hapus Rekening"><i class="la la-trash"></i></a>';
-						return strBuilder;
-					}
-				},
 				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan", textAlign: "center" },
+				{ field: "nama_kode", title: "Keterangan",  sortable:false, textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
 				{ field: "status", title: "Status", textAlign: "center" },
 			]
         });
@@ -117,7 +113,6 @@ var Table = {
 				scroll: false,
 				footer: false
 			},
-			sortable: true,
 			pagination: true,
 			toolbar: {
 				items: {
@@ -130,26 +125,74 @@ var Table = {
 			// 	input: $("#tbxSearchRugiLaba")
 			// },
 			columns: [
-				{
-					field: "id", title: "Actions", sortable: false, textAlign: "center", template: function (t) {
-						var strBuilder = '<a href="/'+rootPage+'/Rekening/editRekening/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></a>\t\t\t\t\t\t';
-						strBuilder += '<a href="/'+rootPage+'/Rekening/Delete/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Hapus Rekening"><i class="la la-trash"></i></a>';
-						return strBuilder;
-					}
-				},
 				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan", textAlign: "center" },
+				{ field: "nama_kode", title: "Keterangan", sortable:false, textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "status", title: "Status", textAlign: "center" },
 				{ field: "status", title: "Status", textAlign: "center" },
 			]
-        });
-    }
-}
+		});
+	}	
+};
+
+var Button = {
+	Init: function(){
+		Button.BtnSearch();
+		Button.BtnReset();
+		Button.BtnLaporan();
+	},
+	BtnSearch: function(){
+		$("#resetNeraca").on('click', function(){
+			DataTable.Init("", "", 1);
+		})
+		$("#resetPosisi").on('click', function(){
+			DataTable.Init("", "", 2);
+		})
+		$("#resetRL").on('click', function(){
+			DataTable.Init("", "", 3);
+		})
+	},
+	BtnReset: function(){
+		$("#searchNeraca").on('click', function(){
+			Control.SearchNeraca()
+		})
+		$("#searchPosisi").on('click', function(){
+			Control.SearchPosisiKas();
+		})
+		$("#searchRL").on('click', function(){
+			Control.SearchRugiLaba();
+		})
+	},
+	BtnLaporan: function(){
+		$("#laporanNeraca").on('click', function(){
+			$("#divContent").html("");
+			$("#divContent").append("<?php $this->load->view(dashboard/laporanNeraca) ?>")
+		})
+		$("#laporanPosisi").on('click', function(){
+			// Control.SearchPosisiKas();
+		})
+		$("#laporanRL").on('click', function(){
+			// Control.SearchRugiLaba();
+		})
+	}
+};
 
 var Control = {
     Init: function(){
         Control.BootstrapDatepicker();
 		Control.Input();
-		Control.Button();
+		Control.Select2();
+
+		// $('.nav-tabs li a').on('click', function() {
+		// 	  if(this.id == "neraca")
+		// 	  	DataTable.GetData("","","",1)
+		// 	  if(this.id == "posisi")
+		// 	  	DataTable.GetData("","","",2)
+		// 	  if(this.id == 'rl' )
+		// 	  	DataTable.GetData("","","",3)
+		// })
     },
     BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
@@ -160,72 +203,100 @@ var Control = {
 		})
 	},
 	Input: function(){
-		// $("#tbxSearchNeracaAll").keyup(function(event){
-        //     if(event.keyCode == 13){
-        //         Control.SearchNeraca();
-        //     }
-        // });
-        // $("#tbxSearchPosisiAll").keyup(function(event){
-        //     if(event.keyCode == 13){
-        //         Control.SearchPosisiKas();
-        //     }
-        // });
-        // $("#tbxSearchRLAll").keyup(function(event){
-        //     if(event.keyCode == 13){
-        //         Control.SearchRugiLaba();
-        //     }
-		// })
+		$("#tbxSearchNeracaAll").keyup(function(event){
+            if(event.keyCode == 13){
+                Control.SearchNeraca();
+            }
+        });
+        $("#tbxSearchPosisiAll").keyup(function(event){
+            if(event.keyCode == 13){
+                Control.SearchPosisiKas();
+            }
+        });
+        $("#tbxSearchRLAll").keyup(function(event){
+            if(event.keyCode == 13){
+                Control.SearchRugiLaba();
+            }
+		})
 	},
-	Button: function(){
-		$("#searchNeraca").on('click', function(){
-			Control.SearchNeraca()
-		})
-		$("#searchPosisi").on('click', function(){
-			Control.SearchPosisiKas();
-		})
-		$("#searchRL").on('click', function(){
-			Control.SearchRugiLaba();
-		})
+	Select2: function(){
+		var sls = $(".m-select2");
+		var monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+		var i = 0;
+		for (i = 0; i < 12; i++) {
+			var value = i + 1;
+			if (i == month) {
+				sls.append("<option value='" + value + "' selected>" + monthNames[i] + "</option>");
+			}
+			else
+				sls.append("<option value='" + value + "' >" + monthNames[i] + "</option>");
+		}
+		sls.selectpicker("refresh");
+		$(".m-select2").selectpicker('refresh');
 
-		$("#resetNeraca").on('click', function(){
-			DataTable.Init("", "", "", 1);
-		})
-		$("#resetPosisi").on('click', function(){
-			DataTable.Init("", "", "", 2);
-		})
-		$("#resetRL").on('click', function(){
-			DataTable.Init("", "", "", 3);
-		})
+		$("#tbxTahunNeraca").val(year);
+		$("#tbxTahunPosisi").val(year);
+		$("#tbxTahunRL").val(year);
 	},
     SearchNeraca: function(){
 		keyword = $("#tbxSearchNeracaAll").val()
-		start = $("#tbxBeginDateNeraca").val()
-		end = $("#tbxEndDateNeraca").val();
-		DataTable.GetData(keyword, start, end, 1)
+		monthData = $("#slsBulanNeraca").val()
+		yearData = $("#tbxTahunNeraca").val();
+		DataTable.GetData(keyword, monthData, yearData, 1)
     },
     SearchPosisiKas: function(){
         keyword = $("#tbxSearchPosisiAll").val()
-		start = $("#tbxBeginDatePosisi").val()
-		end = $("#tbxEndDatePosisi").val();
-		DataTable.GetData(keyword, start, end, 2)
+		monthData = $("#slsBulanPosisi").val()
+		yearData = $("#tbxTahunPosisi").val();
+		DataTable.GetData(keyword, monthData, yearData, 2)
     },
     SearchRugiLaba: function(){
         keyword = $("#tbxSearchRLAll").val()
-		start = $("#tbxBeginDateRL").val()
-		end = $("#tbxEndDateRL").val();
-		DataTable.GetData(keyword, start, end, 3)
-    }
+		monthData = $("#slsBulanRL").val()
+		yearData = $("#tbxTahunRL").val();
+		DataTable.GetData(keyword, monthData, yearData, 3)
+	}
 }
 
-var DataTable = {
+var Data = {
 	Init: function(){
-		DataTable.GetData();
+		Data.GetTableData();
 	},
-	GetData: function(key="", sDate="", eDate="", type=0){
+	GetTableData: function(key="", filterMonth=0, filterYear=0, type=0){
+		var url = ''
+		if(type == 1)
+			url = '/'+rootPage+'/Rekening/ListRekening'
+		if(type == 2)
+			url = '/'+rootPage+'/Rekening/ListRekening'
+		if(type == 3)
+			url = '/'+rootPage+'/Rekening/ListRekening'
+
 		params = {
 			keyword: key,
-			startDate: sDate,
-			endDate: eDate
+			monthData: filterMonth,
+			yearData: filterYear
+		}
+
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			data: {data : JSON.stringify(params)}
+		}).done(function(data, textStatus, jqXHR){
+				if(type == 1)
+					Table.Neraca(data);
+				if(type == 2)
+					Table.PosisiKas(data);
+				if(type == 3)
+					Table.RugiLaba(data)
+		}).fail(function(jqHXR, textStatus, errorThrown){
+
+		})
+	},
+	GetDataLaporan: function(filterMonth=0, filterYear=0, type=0){
+		params = {
+			monthData: filterMonth,
+			yearData: filterYear
 		}
 		$.ajax({
 			url: '/'+rootPage+'/Rekening/ListRekening',
@@ -233,22 +304,9 @@ var DataTable = {
 			dataType: 'json',
 			data: {data : JSON.stringify(params)}
 		}).done(function(data, textStatus, jqXHR){
-			if(type == 0){
 				Table.Neraca(data);
-				Table.PosisiKas(data);
-				Table.RugiLaba(data);
-			}
-			else if(type == 1){
-				Table.Neraca(data);
-			}
-			else if(type == 2){
-				Table.PosisiKas(data);
-			}
-			else if(type == 3){
-				Table.RugiLaba(data);
-			}
 		}).fail(function(jqHXR, textStatus, errorThrown){
 
 		})
-	}
+	},
 }
