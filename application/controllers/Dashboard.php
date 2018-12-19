@@ -80,9 +80,10 @@ class Dashboard extends CI_Controller {
 		$this->load->model('vwRugiLaba');
 		$this->load->model('vwNeraca');
 		$this->load->model('vwPosisiKas');
+		$this->load->model('vwList');
 
 		$formData = json_decode($this->input->post('data'), true);
-		$tipeDashboard = $formData['$tipeDashboard'];
+		$tipeDashboard = $formData['tipeDashboard'];
 		$like = $formData['keyword'];
 		$where = array(
 			'MONTH(TanggalTransaksi)' => $formData['month'],
@@ -91,36 +92,39 @@ class Dashboard extends CI_Controller {
 
 		if($tipeDashboard == 'rugiLaba'){
 			$data = $this->vwRugiLaba->GetListRugiLaba($where, $like);
-			$data = array('data' => $data);
-			 echo json_encode($data);
 		}else if($tipeDashboard == 'posisiKas'){
 			$data = $this->vwPosisiKas->GetListPosisiKas($where, $like);
-			$data = array('data' => $data);
-			echo json_encode($data);
 		}else if($tipeDashboard == 'neraca'){
 			$data = $this->vwNeraca->GetListNeraca($where,$like);
-			$data = array('data' => $data);
-			echo json_encode($data);
 		}else if($tipeDashboard == 'bukuBesar'){
-			$data = $this->vwListTransaksi->GetBukuBesar($where, $like);
-			$data = array('data' => $data);
-			echo json_encode($data);
+			$data = $this->vwList->GetListBukuBesar($where, $like);
 		}
+
+		$data = array('data' => $data);
+		echo json_encode($data);
 	}
 
 	public function searchListTransaksi(){
-		$this->load->model('m_transaksi');
+		$this->load->model('vwList');
 
 		$formData = json_decode($this->input->post('data'), true);
 
 		$like = $formData['keyword'];
-		$tgl_awal = strtotime($formData['startDate']);
-		$tgl_selesai = strtotime($formData['endDate']);
+		$tgl_awal = $formData['startDate'];
+		$tgl_selesai = $formData['endDate'];
 
+		if($tgl_awal == ""){
+			$tgl_awal = ('1980-01-01');
+		}
+		if($tgl_selesai != ""){
+			$tgl_selesai = strtotime($tgl_selesai);
+			$tgl_selesai = date("y-m-d", $tgl_selesai);
+		}
+
+		$tgl_awal = strtotime($tgl_awal);
 		$tgl_awal = date("y-m-d", $tgl_awal);
-		$gl_selesai = date("y-m-d", $tgl_selesai);
 
-		$data = $this->vwListTransaksi->getSearchListTransaksi($like, $tgl_awal, $tgl_selesai);
+		$data = $this->vwList->getSearchListTransaksi($like, $tgl_awal, $tgl_selesai);
 		$data = array('data' => $data);
 		echo json_encode($data);
 	}
