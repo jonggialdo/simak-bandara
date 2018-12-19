@@ -78,11 +78,8 @@
 															<img src="<?php echo base_url()?>public/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
 														</div>
 														<div class="m-card-user__details">
-															<span class="m-card-user__name m--font-weight-500">
-																Mark Andre
-															</span>
-															<a href="" class="m-card-user__email m--font-weight-300 m-link">
-																mark.andre@gmail.com
+															<a class="m-card-user__name m--font-weight-500" id="username">
+																Jonggi Abialdo
 															</a>
 														</div>
 													</div>
@@ -95,7 +92,7 @@
 																	Section
 																</span>
 															</li>
-															<li class="m-nav__item">
+															<!-- <li class="m-nav__item">
 																<a href="header/profile.html" class="m-nav__link">
 																	<i class="m-nav__link-icon flaticon-profile-1"></i>
 																	<span class="m-nav__link-title">
@@ -144,10 +141,10 @@
 																		Support
 																	</span>
 																</a>
-															</li>
+															</li> -->
 															<li class="m-nav__separator m-nav__separator--fit"></li>
 															<li class="m-nav__item">
-																<a href="snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																<a id="btnLogout" href="#" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
 																	Logout
 																</a>
 															</li>

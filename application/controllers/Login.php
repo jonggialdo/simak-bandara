@@ -30,7 +30,7 @@
 				// echo 'sukses';
 				$this->load->model('m_transaksi');
 		    $data['trx'] = $this->m_transaksi->getTransaksi();
-				$this->load->view('v_transaksi/index', $data);
+				$this->load->view('dashboard/v_dashboard', $data);
         //redirect(base_url());
       }
       else {

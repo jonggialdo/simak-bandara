@@ -119,9 +119,15 @@ var Control = {
 		})
 	},
 	Window: function(){
-		window.onload = function(){
-			Common.Alert.PromptRedirect("Apakah anda ingin meninggalkan halaman ini?", '/simak-bandara/Transaksi/tambahTransaksi');
+		window.onbeforeunload = function() {
+			return 'You have unsaved changes!';
 		}
+		window.onunload = function() {
+			alert('Bye.');
+		}
+		// window.onload = function(){
+		// 	Common.Alert.PromptRedirect("Apakah anda ingin meninggalkan halaman ini?", '/simak-bandara/Transaksi/tambahTransaksi');
+		// }
 	}
 }
 
@@ -282,8 +288,8 @@ var Table = {
 				{ field: "kodeRek", title: "Kode Rekening", textAlign: "center" },
 				{ field: "status", title: "Status", textAlign: "center" },
 				{ field: "tgl_transaksi", title: "Tgl Transaksi", textAlign: "center" },
-				{ field: "nominal", title: "Nominal", textAlign: "center" },
 				{ field: "keterangan", title: "Keterangan", textAlign: "center" },
+				{ field: "nominal", title: "Nominal", textAlign: "center" },
 			]
 		});
 	}
