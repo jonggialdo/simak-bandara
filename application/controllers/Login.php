@@ -27,11 +27,7 @@
           'status' => 'login'
         );
         $this->session->set_userdata($data_session);
-				// echo 'sukses';
-				$this->load->model('m_transaksi');
-		    $data['trx'] = $this->m_transaksi->getTransaksi();
-				$this->load->view('dashboard/v_dashboard', $data);
-        //redirect(base_url());
+        redirect(Dashboard);
       }
       else {
         $error = array('error' => "Username atau Password Salah");
