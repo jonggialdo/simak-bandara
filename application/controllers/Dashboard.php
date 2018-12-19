@@ -38,33 +38,6 @@ class Dashboard extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function GetNeraca() {
-		$this->load->model('vwNeraca');
-		$like = $this->input->post('keyword');
-		$where = array(
-			'MONTH(TanggalTransaksi)' => $this->input->post('month'),
-			'YEAR(TanggalTransaksi)' => $this->input->post('year')
-		);
-		$data = $this->vwNeraca->GetListNeraca($where, $like);
-		$data = array('data' => $data);
-
-		echo json_encode($data);
-	}
-
-	public function GetRugiLaba() {
-		$this->load->model('vwRugiLaba');
-		$this->load->model('vwRugiLaba');
-		$like = $this->input->post('keyword');
-		$where = array(
-			'MONTH(TanggalTransaksi)' => $this->input->post('month'),
-			'YEAR(TanggalTransaksi)' => $this->input->post('year')
-		);
-		$data = $this->vwRugiLaba->GetListRugiLaba($where, $like);
-		$data = array('data' => $data);
-
-		echo json_encode($data);
-	}
-
 	public function LaporanRugiLaba() {
 		$this->load->model('vwLaporanRugiLaba');
 		$where = array(
@@ -101,5 +74,54 @@ class Dashboard extends CI_Controller {
 		);
 
 		echo json_encode($result);
+	}
+
+	public function searchDashboard(){
+		$this->load->model('vwRugiLaba');
+		$this->load->model('vwNeraca');
+		$this->load->model('vwPosisiKas');
+
+		$formData = json_decode($this->input->post('data'), true);
+		$tipeDashboard = $formData['$tipeDashboard'];
+		$like = $formData['keyword'];
+		$where = array(
+			'MONTH(TanggalTransaksi)' => $formData['month'],
+			'YEAR(TanggalTransaksi)' => $formData['year']
+		);
+
+		if($tipeDashboard == 'rugiLaba'){
+			$data = $this->vwRugiLaba->GetListRugiLaba($where, $like);
+			$data = array('data' => $data);
+			 echo json_encode($data);
+		}else if($tipeDashboard == 'posisiKas'){
+			$data = $this->vwPosisiKas->GetListPosisiKas($where, $like);
+			$data = array('data' => $data);
+			echo json_encode($data);
+		}else if($tipeDashboard == 'neraca'){
+			$data = $this->vwNeraca->GetListNeraca($where,$like);
+			$data = array('data' => $data);
+			echo json_encode($data);
+		}else if($tipeDashboard == 'bukuBesar'){
+			$data = $this->vwListTransaksi->GetBukuBesar($where, $like);
+			$data = array('data' => $data);
+			echo json_encode($data);
+		}
+	}
+
+	public function searchListTransaksi(){
+		$this->load->model('m_transaksi');
+
+		$formData = json_decode($this->input->post('data'), true);
+
+		$like = $formData['keyword'];
+		$tgl_awal = strtotime($formData['startDate']);
+		$tgl_selesai = strtotime($formData['endDate']);
+
+		$tgl_awal = date("y-m-d", $tgl_awal);
+		$gl_selesai = date("y-m-d", $tgl_selesai);
+
+		$data = $this->vwListTransaksi->getSearchListTransaksi($like, $tgl_awal, $tgl_selesai);
+		$data = array('data' => $data);
+		echo json_encode($data);
 	}
 }

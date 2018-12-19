@@ -13,6 +13,7 @@ class M_transaksi extends CI_Model{
     return $q->result();
   }
 
+
   public function getListTransaksiInput($id_transaksi){
     // $user = $this->session->userdata('username');
     $this->db->where('id_transaksi', $id_transaksi);
