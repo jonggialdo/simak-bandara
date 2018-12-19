@@ -48,11 +48,11 @@ License: You must have a valid license purchased only from themeforest(the above
 									<!--begin: Search Form -->
 									<div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
 										<div class="row align-items-center">
-											<div class="col-xl-8 order-2 order-xl-1">
+											<div class="col-xl-6 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
-													<div class="col-md-5">
+													<div class="col-md-6">
 														<div class="m-input-icon m-input-icon--left">
-															<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchRekening">
+															<input type="text" class="form-control m-input" placeholder="Cari Kode Rekening" id="tbxSearchBukuAll">
 															<span class="m-input-icon__icon m-input-icon__icon--left">
 																<span>
 																	<i class="la la-search"></i>
@@ -62,9 +62,34 @@ License: You must have a valid license purchased only from themeforest(the above
 													</div>
 												</div>
 											</div>
+
+											<div class="col-xl-2 order-2 order-xl-1">
+												<div class="form-group m-form__group row align-items-center">
+													<div class="col-md-12">
+														<select class="form-control m-select2" id="slsBulanBuku"> 
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xl-2 order-2 order-xl-1">
+												<div class="form-group m-form__group row align-items-center">
+													<div class="col-md-12">
+														<input type="text" class="form-control m-input tahunInput" placeholder="Tahun" minlength="4" maxlength="4" id="tbxTahunBuku">
+													</div>
+												</div>
+											</div>
+											<div class=" btn-group col-xl-2 order-2 order-xl-1">
+												<a href="#" class="m-btn btn btn-primary" id="searchBuku">
+													<i class="fa fa-search"></i>
+												</a>
+												<a href="#" class="m-btn btn btn-success" id="downloadBuku">
+													<i class="fa fa-download"></i>
+												</a>
+											</div>
+											
 										</div>
 									</div>
-									<div class="m-content" style="padding-top:10px" id="bukuBesar">
+									<div class="m-content" style="padding-top:10px" id="alertBukuBesar">
 										<div class="alert alert-warning m-alert--default m--align-center" role="alert" style="padding:20px;">
 											<strong>
 												Silakan
@@ -84,6 +109,6 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 	</div>
-	<script src="#" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>public/script/dashboard/bukuBesar.js" type="text/javascript"></script>
 </body>
 </html>

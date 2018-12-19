@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-xl-2 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
 													<div class="col-md-12">
-														<select class="form-control m-select2" id="slsBulanNeraca"> 
+														<select class="form-control m-select2" id="slsBulanNeraca">
 														</select>
 													</div>
 												</div>
@@ -139,15 +139,16 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-xl-2 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
 													<div class="col-md-12">
-															<select class="form-control m-select2" id="slsBulanPosisi"> 
-															</select>
+														<select class="form-control m-select2" id="slsBulanPosisi">
+														</select>
 													</div>
 												</div>
 											</div>
 											<div class="col-xl-2 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-left">
 													<div class="col-md-12">
-														<input type="text" class="form-control m-input tahunInput" placeholder="Tahun" minlength="4" maxlength="4" id="tbxTahunPosisi">
+														<input type="text" class="form-control m-input tahunInput" placeholder="Tahun" minlength="4" maxlength="4"
+														 id="tbxTahunPosisi">
 													</div>
 												</div>
 											</div>
@@ -195,7 +196,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-xl-2 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
 													<div class="col-md-12">
-														<select class="form-control m-select2" id="slsBulanRL"> 
+														<select class="form-control m-select2" id="slsBulanRL">
 														</select>
 													</div>
 												</div>
@@ -203,7 +204,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-xl-2 order-2 order-xl-1">
 												<div class="form-group m-form__group row align-items-center">
 													<div class="col-md-12">
-														<input type="text" class="form-control m-input tahunInput" placeholder="Tahun" minlength="4" maxlength="4" id="tbxTahunRL">
+														<input type="text" class="form-control m-input tahunInput" placeholder="Tahun" minlength="4" maxlength="4"
+														 id="tbxTahunRL">
 													</div>
 												</div>
 											</div>

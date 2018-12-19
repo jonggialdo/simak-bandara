@@ -3,7 +3,7 @@ var rootPage = window.location.pathname.split('/')[1]
 //== Class Initialization
 jQuery(document).ready(function () {
 	Control.Init();
-	DataTable.GetData();
+	// DataTable.GetData();
 });
 
 var Table = {
@@ -35,24 +35,32 @@ var Table = {
 				}
 			},
 			columns: [
-				{
-					field: "id", title: "Actions", sortable: false, textAlign: "center", template: function (t) {
-						var strBuilder = '<a href="/'+rootPage+'/Rekening/editRekening/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" title="Edit Rekening"><i class="la la-edit"></i></a>\t\t\t\t\t\t';
-						strBuilder += '<a href="/'+rootPage+'/Rekening/Delete/' + t.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Hapus Rekening"><i class="la la-trash"></i></a>';
-						return strBuilder;
-					}
-				},
-				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "TanggalTransaksi", title: "Tgl Transaksi", textAlign: "center", template: function(e){ return Common.Format.Date(e.TanggalTransaksi);}},
+				{ field: "Uraian", title: "Uraian", sortable:false, textAlign: "center" },
+				{ field: "NomorRekening", title: "Rekening", textAlign: "center" },
+				{ field: "Debet", title: "Debet", textAlign: "center"},
+				{ field: "Kredit", title: "Kredit", textAlign: "center"}
 			]
 		})
 	}
 }
 
+var Button = {
+	Init: function(){
+		$("#searchTrx").on('click', function(){
+			Control.SearchTrx()
+		})
+		$("#resetTrx").on('click', function(){
+			DataTable.GetData();
+		})
+	},
+};
+
 var Control = {
     Init: function(){
-        Control.BootstrapDatepicker();
+		Control.BootstrapDatepicker();
+		Control.Input();
+		Control.SearchTrx();
     },
     BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
@@ -62,45 +70,39 @@ var Control = {
 			}
 		})
 	},
-	Button: function(){
-		$("#searchTrx").on('click', function(){
-			Control.SearchTrx()
-		})
-		$("#resetTrx").on('click', function(){
-			DataTable.GetData();
-		})
-	},
 	Input: function(){
-        // $("#tbxSearchRekeningAll").keyup(function(event){
-        //     if(event.keyCode == 13){
-        //         Control.SearchTrx();
-        //     }
-		// })
+        $("#tbxSearchRekeningAll").keyup(function(event){
+            if(event.keyCode == 13){
+                Control.SearchTrx();
+            }
+		})
 	},
 	SearchTrx: function(){
 		keyword = $("#tbxSearchRekeningAll").val()
 		start = $("#tbxBeginDate").val()
-		end = $("#tbxEndDate").val();
+		end = $("#tbxEndDate").val()
 		DataTable.GetData(keyword, start, end)
     },
 }
 
 var DataTable = {
-	GetData: function(key="", sDate="", eDate=""){
+	GetData: function(key, sDate, eDate){
 		params = {
 			keyword: key,
 			startDate: sDate,
 			endDate: eDate
 		}
+		
 		$.ajax({
-			url: '/'+rootPage+'/Rekening/ListRekening',
-			type: 'GET',
+			url: '/'+rootPage+'/Dashboard/searchListTransaksi',
+			type: 'POST',
 			dataType: 'json',
 			data: {data : JSON.stringify(params)}
 		}).done(function(data, textStatus, jqXHR){
+			$("#divTrx").mDatatable('destroy')
 			Table.Init(data);
 		}).fail(function(jqHXR, textStatus, errorThrown){
-
+			
 		})
 	}
 }

@@ -3,15 +3,12 @@ var rootPage = window.location.pathname.split('/')[1]
 var month = new Date().getMonth();
 var year = new Date().getFullYear();
 
-var keyword = ''
-var monthData = ''
-var yearData = ''
-
 //== Class Initialization
 jQuery(document).ready(function () {
-	Data.GetTableData("","",1)
 	Button.Init();
-    Control.Init();
+	Control.Init();
+	$('#divDokPosisiKas').hide();
+	$('#divDokRugiLaba').hide();
 });
 
 var Table = {
@@ -22,8 +19,8 @@ var Table = {
 				source: data,
 				pageSize: 10,
 				saveState: {
-					cookie: true,
-					webstorage: true
+					cookie: false,
+					webstorage: false
 				},
 				serverPaging: false,
 				serverFiltering: false,
@@ -45,13 +42,11 @@ var Table = {
 			// 	input: $("#tbxSearchNeraca")
 			// },
 			columns: [
-				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan",  sortable:false, textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "TanggalTransaksi", title: "Tgl Transaksi", textAlign: "center", template: function(e){ return Common.Format.Date(e.TanggalTransaksi);}},
+				{ field: "Uraian", title: "Uraian", sortable:false, textAlign: "center" },
+				{ field: "NomorRekening", title: "Rekening", textAlign: "center" },
+				{ field: "Debet", title: "Debet", textAlign: "center"},
+				{ field: "Kredit", title: "Kredit", textAlign: "center"}
 			]
         });
     },
@@ -62,8 +57,8 @@ var Table = {
 				source:data,
 				pageSize: 10,
 				saveState: {
-					cookie: true,
-					webstorage: true
+					cookie: false,
+					webstorage: false
 				},
 				serverPaging: false,
 				serverFiltering: false,
@@ -85,15 +80,13 @@ var Table = {
 			// 	input: $("#tbxSearchPosisi")
 			// },
 			columns: [
-				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan",  sortable:false, textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "TanggalTransaksi", title: "Tgl Transaksi", textAlign: "center", template: function(e){ return Common.Format.Date(e.TanggalTransaksi);} },
+				{ field: "Uraian", title: "Uraian", sortable:false, textAlign: "center" },
+				{ field: "NomorRekening", title: "Rekening", textAlign: "center" },
+				{ field: "Debet", title: "Debet", textAlign: "center"},
+				{ field: "Kredit", title: "Kredit", textAlign: "center"}
 			]
-        });
+		});
     },
     RugiLaba: function(data){
         rugiLaba = $("#divRugiLaba").mDatatable({
@@ -102,8 +95,8 @@ var Table = {
 				source: data,
 				pageSize: 10,
 				saveState: {
-					cookie: true,
-					webstorage: true
+					cookie: false,
+					webstorage: false
 				},
 				serverPaging: false,
 				serverFiltering: false,
@@ -125,13 +118,11 @@ var Table = {
 			// 	input: $("#tbxSearchRugiLaba")
 			// },
 			columns: [
-				{ field: "kode_rekening", title: "Kode Rekening", textAlign: "center" },
-				{ field: "nama_kode", title: "Keterangan", sortable:false, textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
-				{ field: "status", title: "Status", textAlign: "center" },
+				{ field: "TanggalTransaksi", title: "Tgl Transaksi", textAlign: "center", template: function(e){ return Common.Format.Date(e.TanggalTransaksi);}},
+				{ field: "Uraian", title: "Uraian", sortable:false, textAlign: "center" },
+				{ field: "NomorRekening", title: "Rekening", textAlign: "center" },
+				{ field: "Debet", title: "Debet", textAlign: "center"},
+				{ field: "Kredit", title: "Kredit", textAlign: "center"}
 			]
 		});
 	}	
@@ -141,20 +132,23 @@ var Button = {
 	Init: function(){
 		Button.BtnSearch();
 		Button.BtnReset();
-		Button.BtnLaporan();
-	},
-	BtnSearch: function(){
-		$("#resetNeraca").on('click', function(){
-			DataTable.Init("", "", 1);
-		})
-		$("#resetPosisi").on('click', function(){
-			DataTable.Init("", "", 2);
-		})
-		$("#resetRL").on('click', function(){
-			DataTable.Init("", "", 3);
-		})
+		// Button.BtnLaporan();
 	},
 	BtnReset: function(){
+		$("#resetNeraca").on('click', function(){
+			$("#tbxSearchNeracaAll").val("")
+			Control.SearchNeraca();
+		})
+		$("#resetPosisi").on('click', function(){
+			$("#tbxSearchPosisiAll").val("")
+			Control.SearchPosisiKas()
+		})
+		$("#resetRL").on('click', function(){
+			$("#tbxSearchRLAll").val("")
+			Control.SearchRugiLaba();
+		})
+	},
+	BtnSearch: function(){
 		$("#searchNeraca").on('click', function(){
 			Control.SearchNeraca()
 		})
@@ -167,11 +161,9 @@ var Button = {
 	},
 	BtnLaporan: function(){
 		$("#laporanNeraca").on('click', function(){
-			$("#divContent").html("");
-			$("#divContent").append("<?php $this->load->view(dashboard/laporanNeraca) ?>")
 		})
 		$("#laporanPosisi").on('click', function(){
-			// Control.SearchPosisiKas();
+			// $("#divDokPosisiKas").show();
 		})
 		$("#laporanRL").on('click', function(){
 			// Control.SearchRugiLaba();
@@ -185,15 +177,10 @@ var Control = {
 		Control.Input();
 		Control.Select2();
 
-		// $('.nav-tabs li a').on('click', function() {
-		// 	  if(this.id == "neraca")
-		// 	  	DataTable.GetData("","","",1)
-		// 	  if(this.id == "posisi")
-		// 	  	DataTable.GetData("","","",2)
-		// 	  if(this.id == 'rl' )
-		// 	  	DataTable.GetData("","","",3)
-		// })
-    },
+		Data.GetTableData("", month+1, year, 'neraca');
+		Data.GetTableData("", month+1, year, 'posisiKas');
+		Data.GetTableData("", month+1, year, 'rugiLaba');
+	},
     BootstrapDatepicker: function () {
 		$(".datepicker").datepicker({
 			format: 'dd-M-yyyy',
@@ -240,60 +227,59 @@ var Control = {
 	},
     SearchNeraca: function(){
 		keyword = $("#tbxSearchNeracaAll").val()
-		monthData = $("#slsBulanNeraca").val()
-		yearData = $("#tbxTahunNeraca").val();
-		DataTable.GetData(keyword, monthData, yearData, 1)
+		monthData = parseInt($("#slsBulanNeraca").val())
+		yearData = parseInt($("#tbxTahunNeraca").val())
+		Data.GetTableData(keyword, monthData, yearData, 'neraca')
     },
     SearchPosisiKas: function(){
         keyword = $("#tbxSearchPosisiAll").val()
-		monthData = $("#slsBulanPosisi").val()
-		yearData = $("#tbxTahunPosisi").val();
-		DataTable.GetData(keyword, monthData, yearData, 2)
+		monthData = parseInt($("#slsBulanPosisi").val())
+		yearData = parseInt($("#tbxTahunPosisi").val())
+		Data.GetTableData(keyword, monthData, yearData, 'posisiKas')
     },
     SearchRugiLaba: function(){
-        keyword = $("#tbxSearchRLAll").val()
-		monthData = $("#slsBulanRL").val()
-		yearData = $("#tbxTahunRL").val();
-		DataTable.GetData(keyword, monthData, yearData, 3)
+        keyword = $("#tbxSearchRLAll")
+		monthData = parseInt($("#slsBulanRL").val())
+		yearData =parseInt($("#tbxTahunRL").val())
+		Data.GetTableData(keyword, monthData, yearData, 'rugiLaba')
+		
 	}
 }
 
 var Data = {
-	Init: function(){
-		Data.GetTableData();
-	},
-	GetTableData: function(key="", filterMonth=0, filterYear=0, type=0){
-		var url = ''
-		if(type == 1)
-			url = '/'+rootPage+'/Rekening/ListRekening'
-		if(type == 2)
-			url = '/'+rootPage+'/Rekening/ListRekening'
-		if(type == 3)
-			url = '/'+rootPage+'/Rekening/ListRekening'
-
+	GetTableData: function(key, filterMonth, filterYear, tipe){
 		params = {
+			tipeDashboard: tipe,
 			keyword: key,
-			monthData: filterMonth,
-			yearData: filterYear
+			month: filterMonth,
+			year: filterYear
 		}
 
 		$.ajax({
-			url: url,
-			type: 'GET',
+			url: '/'+rootPage+'/Dashboard/searchDashboard',
+			type: 'POST',
 			dataType: 'json',
 			data: {data : JSON.stringify(params)}
 		}).done(function(data, textStatus, jqXHR){
-				if(type == 1)
+				if(tipe == 'neraca'){
+					$("#divNeraca").mDatatable('destroy')
 					Table.Neraca(data);
-				if(type == 2)
+				}
+				else if(tipe == 'posisiKas'){
+					$("#divPosisiKas").mDatatable('destroy')
 					Table.PosisiKas(data);
-				if(type == 3)
+				}
+				else if(tipe == 'rugiLaba'){
+					$("#divRugiLaba").mDatatable('destroy')
 					Table.RugiLaba(data)
+				}
 		}).fail(function(jqHXR, textStatus, errorThrown){
 
 		})
 	},
-	GetDataLaporan: function(filterMonth=0, filterYear=0, type=0){
+	GetDataLaporan: function(filterMonth, filterYear, tipe){
+		
+		
 		params = {
 			monthData: filterMonth,
 			yearData: filterYear

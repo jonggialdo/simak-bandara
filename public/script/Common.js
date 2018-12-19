@@ -110,9 +110,15 @@
 jQuery(document).ready(function () {
 	//turn active in sidebar
 	var path = window.location.pathname;
-    path2 = path.split('/')[2];
+	path2 = path.split('/')[2];
+	path3 = path.split('/')[3];
     $('.sidebarActive').each(function () {
-        if (this.id == path2)
+		if(path3 != null){
+			if(this.id == path3){
+				$(this).addClass('m-menu__item--active').siblings().removeClass("m-menu__item--active");	
+			}
+		}
+        else if (this.id == path2)
             $(this).addClass('m-menu__item--active').siblings().removeClass("m-menu__item--active");
     })
 });
