@@ -20,7 +20,7 @@
             </li>
             <li class="m-menu__item  m-menu__item sidebarActive" id="Transaksi" aria-haspopup="true">
                 <a href="<?php echo base_url('/dashboard/Transaksi') ?>" class="m-menu__link ">
-                    <i class="m-menu__link-icon flaticon-coins"></i>
+                    <i class="m-menu__link-icon flaticon-clipboard"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -30,7 +30,7 @@
                     </span>
                 </a>
             </li>
-            <li class="m-menu__item  m-menu__item sidebarActive" id="dashboard" aria-haspopup="true">
+            <li class="m-menu__item  m-menu__item--active sidebarActive" id="dashboard" aria-haspopup="true">
                 <a href="<?php echo base_url('/dashboard') ?>" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-coins"></i>
                     <span class="m-menu__link-title">
@@ -44,7 +44,7 @@
             </li>
             <li class="m-menu__item  m-menu__item sidebarActive" id="rekening" aria-haspopup="true">
                 <a href="<?php echo base_url('/rekening') ?>" class="m-menu__link ">
-                    <i class="m-menu__link-icon flaticon-book"></i>
+                    <i class="m-menu__link-icon flaticon-notes"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -54,7 +54,7 @@
                     </span>
                 </a>
             </li>
-            <li class="m-menu__item  m-menu__item sidebarActive" id="transaksi" aria-haspopup="true">
+            <li class="m-menu__item  m-menu__item sidebarActive" id="tambahTransaksi" aria-haspopup="true">
                 <a href="<?php echo base_url('/transaksi/tambahTransaksi') ?>" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-cart"></i>
                     <span class="m-menu__link-title">
