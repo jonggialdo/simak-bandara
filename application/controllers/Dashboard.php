@@ -90,8 +90,8 @@ class Dashboard extends CI_Controller {
 		$laba_kotor = $total_pendapatan - $total_harga_pokok;
 		$laba_xxx = $laba_kotor - $total_biaya_administrasi;
 		$result = array(
-			'data' => $data, 
-			'tp' => $total_pendapatan, 
+			'data' => $data,
+			'tp' => $total_pendapatan,
 			'thp' => $total_harga_pokok,
 			'lk' => $laba_kotor,
 			'tba' => $total_biaya_administrasi,
@@ -101,4 +101,3 @@ class Dashboard extends CI_Controller {
 		echo json_encode($result);
 	}
 }
-

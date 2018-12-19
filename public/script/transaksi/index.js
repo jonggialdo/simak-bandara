@@ -169,7 +169,7 @@ var Transaction = {
 		}
 		console.log(params);
 		btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
-				
+
 		$.ajax({
 				url: '/'+rootPage+'/Transaksi/editTransaksi/'+id,
 				type: 'POST',

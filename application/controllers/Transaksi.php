@@ -30,11 +30,13 @@ class Transaksi extends CI_Controller {
 
 		$id_transaksi = $formData['id'];
 		$kodeRek= $formData['kodeRek'];
-		$tgl_transaksi =  $formData['tgl_transaksi'];//tgl_transaksi
+		$tgl_transaksi =  strtotime($formData['tgl_transaksi']);//tgl_transaksi
 		$status = $formData['status'];
 		$keterangan = $formData['keterangan'];
 		$nominal = $formData['nominal'];
 		// $created_by = $this->session->userdata('username');
+
+		$tgl_transaksi = date("y-m-d", $tgl_transaksi);
 
 		$data_listTransaksi = array(
 			'kodeRek' => $kodeRek,
@@ -99,7 +101,7 @@ class Transaksi extends CI_Controller {
 		);
 
 		$this->m_transaksi->editListTransaksi($data_listTransaksi,$id_listTransaksi);
-
+		echo json_encode($formData);
 	}
 
 	public function ListTransaksi(){//tabel transaksi harian yang udah di konfirmasi, masih perlu di edit
