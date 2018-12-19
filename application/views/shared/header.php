@@ -5,7 +5,7 @@
 					<div class="m-stack__item m-brand  m-brand--skin-dark ">
 						<div class="m-stack m-stack--ver m-stack--general">
 							<div class="m-stack__item m-stack__item--middle m-brand__logo">
-								<a href="index.html" class="m-brand__logo-wrapper">
+								<a href="<?php echo base_url('/dashboard') ?>" class="m-brand__logo-wrapper">
 									<img alt="" src="<?php echo base_url()?>public/assets/demo/default/media/img/logo/dashboard.png" />
 									<!--butuh logo-->
 								</a>
@@ -79,7 +79,7 @@
 														</div>
 														<div class="m-card-user__details">
 															<a class="m-card-user__name m--font-weight-500" id="username">
-																Jonggi Abialdo
+																<?php echo $this->session->userdata('username');?>
 															</a>
 														</div>
 													</div>
@@ -144,7 +144,7 @@
 															</li> -->
 															<li class="m-nav__separator m-nav__separator--fit"></li>
 															<li class="m-nav__item">
-																<a id="btnLogout" href="#" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+																<a id="btnLogout" href="<?php echo base_url('login/logout'); ?>" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
 																	Logout
 																</a>
 															</li>
