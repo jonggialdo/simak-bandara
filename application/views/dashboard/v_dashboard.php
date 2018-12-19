@@ -232,6 +232,110 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="m_datatable" id="divRugiLaba"></div>
 								</div>
 							</div>
+
+
+						</div>
+					</div>
+
+					<div class="row" id="divDokPosisiKas">
+						<div class="col-lg-12 m-portlet m-portlet--mobile">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+										<h3 class="m-portlet__head-text">
+											Laporan Perubahan Posisi Kas
+										</h3>
+									</div>
+								</div>
+							</div>
+							<div class="m-portlet__body">
+								<div class="row">
+									<p class="col-lg-6">Saldo Awal : </p>
+									<p class="col-lg-6" id="hasilSaldoAwal">6000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6">Penambahan <small>(jumlah kredit jurnal umum)</small> : </p>
+									<p class="col-lg-6" id="hasilPenambahan">6000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6"> </p>
+									<p class="col-lg-6">____________ +</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6"> </p>
+									<p class="col-lg-6" id="totalAwal">12000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6">Pengurangan <small>(jumlah debit jurnal umum)</small> : </p>
+									<p class="col-lg-6" id="hasilPenambahan">6000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6"> </p>
+									<p class="col-lg-6">____________ -</p>
+								</div>
+								<div class="row">
+									<b class="col-lg-6">Saldo Akhir : </b>
+									<b class="col-lg-6" id="hasilSaldoAwal">6000000</b>
+								</div>
+								<!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. -->
+							</div>
+						</div>
+					</div>
+
+					<div class="row" id="divDokRugiLaba">
+						<div class="col-lg-12 m-portlet m-portlet--mobile">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+										<h3 class="m-portlet__head-text">
+											Rugi / Laba
+										</h3>
+									</div>
+								</div>
+							</div>
+							<div class="m-portlet__body">
+								<div class="row">
+									<p class="col-lg-6">Pendapatan : </p>
+									<p class="col-lg-6" id="hasilPendapatan">6000000</p>
+								</div>
+								<div class="row">
+									<ul>
+										<li>test</li>
+										<li>test1</li>
+									</ul>
+								</div>
+								<div class="row">
+									<p class="col-lg-6">Harga Pokok Pendapatan : </p>
+									<p class="col-lg-6" id="hasilPokokPendapatan">6000000</p>
+								</div>
+								<div class="row">
+									<ul>
+										<li>test</li>
+										<li>test1</li>
+									</ul>
+								</div>
+								<div class="row">
+									<p class="col-lg-6"> </p>
+									<p class="col-lg-6">____________ -</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6">Laba Kotor : </p>
+									<p class="col-lg-6" id="hasilLabaKotor">12000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6">Pengurangan <small>(jumlah debit jurnal umum)</small> : </p>
+									<p class="col-lg-6" id="hasilPenambahan">6000000</p>
+								</div>
+								<div class="row">
+									<p class="col-lg-6"> </p>
+									<p class="col-lg-6">____________ -</p>
+								</div>
+								<div class="row">
+									<b class="col-lg-6">Saldo Akhir : </b>
+									<b class="col-lg-6" id="hasilSaldoAwal">6000000</b>
+								</div>
+								<!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. -->
+							</div>
 						</div>
 					</div>
 				</div>
